@@ -88,6 +88,32 @@
             margin-top: 10px;
         }
 
+        .sub-box {
+            background-color: #cad9ec; /* light blue background color */
+            padding: 10px;
+            margin: 5px;
+            width: 300px; /* Adjust the width as needed */
+            height: 15px; /* Adjust the height as needed */
+            font-size: 16px;
+            font-weight: normal; /* normal font weight */
+            color: black;
+        }
+        .total-sub-box {
+            background-color: #ffffff; /* light blue background color */
+            padding: 10px;
+            margin: 5px;
+            width: 300px; /* Adjust the width as needed */
+            height: 15px; /* Adjust the height as needed */
+            font-size: 16px;
+            font-weight: normal; /* normal font weight */
+            color: black;
+        }
+        .currency{
+            float: left;
+            font-size: 16px;
+            color: white;
+        }
+
     </style>
 </head>
 <body>
@@ -253,7 +279,7 @@
                                 </div>
                                 <div class="blue-box">
                                     <p><span>Length of Study</span></p>
-                                    <select>
+                                    <select id="lengthOfStay">
                                         <option value="Default">Select Length of Study</option>
                                         <option value="Summer">Summer</option>
                                         <option value="Semester">Semester</option>
@@ -271,13 +297,15 @@
                                     </select>
                                 </div>
                                     <div class="blue-box">
-                                        <p><span>Base Costs</span></p>
-                                    </div>
-                                    </div>
-                                    <div class="blue-box">
                                         <p><span>Total</span></p>
                                         <input type="text" id="total" disabled>
+                                        <div class="currency">
+                                            <span id="currencySymbol"></span><span id="currency"></span>
+                                        </div>
                                     </div>
+
+                                    <button id="convertToUSDButton">Convert to USD</button>
+                                    <button id="convertToYuansButton" style="display: none;">Convert to Yuan</button>
                                 </strong>
                             </tr>
                             <tr>
@@ -289,73 +317,149 @@
                         <p><strong><span>For more information, please visit the website </span><a href="http://www.studyinchina.edu.cn/"><span>www.studyinchina.edu.cn</span></a><span>.</span></strong></p>
                     </div>
                 </div>
-                    <script>
-                        document.addEventListener("DOMContentLoaded", function () {
-                            const areaOfStudySelect = document.getElementById("areaOfStudy");
-                            const degreeProgramSelect = document.getElementById("degreeProgram");
-
-                            // Define the value mappings for different areas of study
-                            const areaToValueMap = {
-                                "Liberal Arts": {
-                                    "Undergraduate": 26000,
-                                    "Post-Graduate and Researcher": 30000,
-                                    "PhD": 34000
-                                },
-                                "Science and Technology": {
-                                    "Undergraduate": 33800,
-                                    "Post-Graduate and Researcher": 39000,
-                                    "PhD": 44200
-                                },
-                                "Medical Science": {
-                                    "Undergraduate": 56000,
-                                    "Post-Graduate and Researcher": 60000,
-                                    "PhD": 68000
-                                }
-                            };
-
-                            // Function to update the Degree Program options based on the selected Area of Study
-                            function updateDegreeProgramValues() {
-                                const selectedValue = areaOfStudySelect.value;
-                                const degreeProgramOptions = areaToValueMap[selectedValue];
-
-                                // Update the values of the Degree Program options
-                                for (let i = 0; i < degreeProgramSelect.options.length; i++) {
-                                    const option = degreeProgramSelect.options[i];
-                                    option.value = degreeProgramOptions[option.textContent.trim()];
-                                }
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const selects = document.querySelectorAll("select");
+                        const totalInput = document.getElementById("total");
+                        let currency = "Yuan";
+                        let originalTotal = 2800;
+                        function convertToUSD(totalInYuans) {
+                            const exchangeRate = 0.14; // Example exchange rate: 1 Yuan = 0.15 USD
+                            return totalInYuans * exchangeRate;
+                        }
+                        function convertToYuans(totalInUSD) {
+                            const exchangeRate = 1 / 0.14; // Inverse of the example exchange rate: 1 USD = 6.67 Yuan
+                            return totalInUSD * exchangeRate;
+                        }
+                        function updateTotalDisplay() {
+                            const value = parseFloat(totalInput.value);
+                            if (currency === "USD") {
+                                totalInput.value = value.toFixed(2);
+                                document.getElementById("currencySymbol").innerText = "$";
+                            } else if (currency === "Yuan") {
+                                totalInput.value = value.toFixed(2);
+                                document.getElementById("currencySymbol").innerText = "¥";
                             }
-
-                            // Event listener for changes in the Area of Study select element
-                            areaOfStudySelect.addEventListener("change", updateDegreeProgramValues);
-
-                            // Initial update of the Degree Program options based on the default Area of Study
-                            updateDegreeProgramValues();
-                        });
-
-                        document.addEventListener("DOMContentLoaded", function () {
-                            const selects = document.querySelectorAll("select");
-                            const totalInput = document.getElementById("total");
-
-                            // Function to calculate the total value
-                            function calculateTotal() {
-                                let sum = 0;
-                                selects.forEach((select) => {
-                                    const selectedValue = parseInt(select.value);
-                                    if (!isNaN(selectedValue)) {
-                                        sum += selectedValue;
-                                    }
-                                });
-                                totalInput.value = sum;
-                            }
-
-                            // Event listeners for select elements
+                        }
+                        function calculateTotal() {
+                            let sum = originalTotal;
                             selects.forEach((select) => {
-                                select.addEventListener("change", calculateTotal);
+                                const selectedValue = parseInt(select.value);
+                                if (!isNaN(selectedValue)) {
+                                    sum += selectedValue;
+                                }
                             });
+                            totalInput.value = sum;
+                            updateTotalDisplay();
+                        }
+
+                        function convertAndUpdateToUSD() {
+                            const convertedTotal = convertToUSD(parseInt(totalInput.value));
+                            totalInput.value = convertedTotal.toFixed(2);
+                            currency = "USD";
+                            convertToUSDButton.style.display = "none";
+                            convertToYuansButton.style.display = "block";
+                            updateTotalDisplay();
+                        }
+
+                        function convertAndUpdateToYuans() {
+                            const convertedTotal = convertToYuans(parseInt(totalInput.value));
+                            totalInput.value = convertedTotal.toFixed(2);
+                            currency = "Yuan";
+                            convertToYuansButton.style.display = "none";
+                            convertToUSDButton.style.display = "block";
+                            updateTotalDisplay();
+                        }
+
+                        selects.forEach((select) => {
+                            select.addEventListener("change", calculateTotal);
                         });
 
-                    </script>
-                </div>
+                        const convertToUSDButton = document.getElementById("convertToUSDButton");
+                        convertToUSDButton.addEventListener("click", convertAndUpdateToUSD);
+
+                        const convertToYuansButton = document.getElementById("convertToYuansButton");
+                        convertToYuansButton.addEventListener("click", convertAndUpdateToYuans);
+
+
+                        const areaOfStudySelect = document.getElementById("areaOfStudy");
+                        const degreeProgramSelect = document.getElementById("degreeProgram");
+
+                        const areaToValueMap = {
+                            "Liberal Arts": {
+                                "Undergraduate": 26000,
+                                "Post-Graduate and Researcher": 30000,
+                                "PhD": 34000
+                            },
+                            "Science and Technology": {
+                                "Undergraduate": 33800,
+                                "Post-Graduate and Researcher": 39000,
+                                "PhD": 44200
+                            },
+                            "Medical Science": {
+                                "Undergraduate": 56000,
+                                "Post-Graduate and Researcher": 60000,
+                                "PhD": 68000
+                            }
+                        };
+
+                        const lengthOfStaySelect = document.getElementById("lengthOfStay");
+                        const housingSelect = document.getElementById("housing");
+
+                        const stayToHousingMap = {
+                            "Summer": {
+                                "Single Bed": 10500,
+                                "Double Bed": 5600,
+                            },
+                            "Semester": {
+                                "Single Bed": 16800,
+                                "Double Bed": 8960,
+                            },
+                            "School Year": {
+                                "Single Bed": 33600,
+                                "Double Bed": 17920,
+                            }
+                        };
+
+                        function updateLengthOfStayValues() {
+                            const selectedValue = lengthOfStaySelect.value;
+                            const housingOptions = stayToHousingMap[selectedValue];
+
+                            for (let i = 0; i < housingSelect.options.length; i++) {
+                                const option = housingSelect.options[i];
+                                option.value = housingOptions[option.textContent.trim()];
+                            }
+
+                            calculateTotal(); // Call calculateTotal to update the total whenever length of stay values change
+                        }
+
+                        function updateDegreeProgramValues() {
+                            const selectedValue = areaOfStudySelect.value;
+                            const degreeProgramOptions = areaToValueMap[selectedValue];
+
+                            for (let i = 0; i < degreeProgramSelect.options.length; i++) {
+                                const option = degreeProgramSelect.options[i];
+                                option.value = degreeProgramOptions[option.textContent.trim()];
+                            }
+
+                            calculateTotal(); // Call calculateTotal to update the total whenever degree program values change
+                        }
+
+                        lengthOfStaySelect.addEventListener("change", updateLengthOfStayValues);
+                        areaOfStudySelect.addEventListener("change", updateDegreeProgramValues);
+
+                        updateLengthOfStayValues(); // Call initially to set default housing values
+                        updateDegreeProgramValues(); // Call initially to set default degree program values
+
+                        if (currency === "USD") {
+                            convertToYuansButton.style.display = "none";
+                        } else {
+                            convertToUSDButton.style.display = "none";
+                        }
+                        updateTotalDisplay();
+                    });
+                </script>
+            </div>
             </div>      </html>
     </div>
 </div>
