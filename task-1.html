@@ -1,0 +1,864 @@
+
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name="referrer" content="always">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link type="image/x-icon" rel="shortcut icon" href="./plug-in/sino/ui/qztb/img/favicon.ico">
+
+    <script>
+        var lang = 'en_US';//获取session中的语言类别
+        if(!lang){
+            lang="zh_CN";
+        }
+        var pageKeys = '{"001":"001","002":"278r1VPrirHVKV8VnVmVSrkrjrkVYVPVSVcriVPVlVSrjVcVbVnVSVYVPrjVnVYV8rHrkVnVcr1rjVYVa","003":"278VcVYVarHrjririVlVSV8ririVYVYVSVcV8VnVmVSVPVbrkrjVSVYVnVPVarkVnrIrIrkVYrHrIr1Vb","014":"278VcVcriVmVmririVmVSrIVbrIVYVcVSVcrHrHrjVSVPririrIVSV8VnVnVYriVYVnVlrHriVYVcVYVc","015":"278rjrHr1V8VmVlrHVKVSrjVmrkVYrHVSVcVmVcVmVSrjrHrHVnVSV8Vcrkrjr1rIVnVbV8VaVPrIrHVl"}';
+    </script>
+
+
+
+    <script type="text/javascript" src="./plug-in/jquery/jquery-1.8.3.min.js?__s_version=1.1.3"></script>
+    <!-- 可搜索下拉框插件 -->
+    <script type="text/javascript" src="./plug-in/jquery-plugs/select2/select2min.js?__s_version=1.1.3"></script>
+
+    <script type="text/javascript" src="./plug-in/sino/ui/qztb/js/qzCoCommon-common.js?__s_version=1.1.3"></script>
+
+    <!-- Bootstrap css file v2.2.1 -->
+    <link rel="stylesheet" type="text/css" href="./plug-in/bootstrap/css/bootstrap.css?__s_version=1.1.3">
+    <link rel="stylesheet" type="text/css" href="./plug-in/bootstrap/css/bootstrap-responsive.css?__s_version=1.1.3">
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" type="text/css" href="./plug-in/jquery-plugs/iealert/css/style.css?__s_version=1.1.3">
+    <![endif]-->
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="./plug-in/bootstrap/css/bootstrap-ie6.css?__s_version=1.1.3">
+    <link rel="stylesheet" type="text/css" href="./plug-in/bootstrap/css/ie.css?__s_version=1.1.3">
+    <![endif]-->
+
+    <!-- 日期插件样式 -->
+    <link rel="stylesheet" type="text/css" href="./plug-in/jquery-plugs/datetimepicker/css/bootstrap-datetimepicker.min.css?__s_version=1.1.3">
+    <script>
+        if(lang && lang == "ar_AE"){
+            document.write("<link rel='stylesheet' type='text/css' href='./plug-in/artDialog/skins/blue_ar.css?__s_version=1.1.3'/>");
+            document.write("<link rel='stylesheet' type='text/css' href='./plug-in/sino/ui/qztb/css/qzCoCommon-common-ar.css?__s_version=1.1.3'>");
+            /* <!-- select2插件样式 --> */
+            document.write("<link rel='stylesheet' type='text/css' href='./plug-in/jquery-plugs/select2/select2_ar.css?__s_version=1.1.3'>");
+        } else {
+            document.write("<link rel='stylesheet' type='text/css' href='./plug-in/artDialog/skins/blue.css?__s_version=1.1.3'/>");
+            document.write("<link rel='stylesheet' type='text/css' href='./plug-in/sino/ui/qztb/css/qzCoCommon-common.css?__s_version=1.1.3'>");
+            /* <!-- select2插件样式 --> */
+            document.write("<link rel='stylesheet' type='text/css' href='./plug-in/jquery-plugs/select2/select2.css?__s_version=1.1.3'>");
+        }
+    </script>
+
+    <title>中国签证申请在线填表-个人信息</title>
+    <!-- 私有meta和css引用位置-->
+    <link rel="stylesheet" type="text/css" href="/plug-in/sino/ui/qztb/css/qzCoCommon-personal.css?__s_version=1.1.3">
+    <style>
+        .error{
+            color:red;
+        }
+        .select-width {
+            width:95%;
+        }
+    </style>
+</head>
+<script>
+    var ctx = '';
+    var ApplyId = '2023111310480970860';
+</script>
+<body id="002" name='markflow'>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a href="javascript:void(0);" class="brand hidden-phone">
+
+            </a>
+            <div class="nav-collapse collapse">
+                <ul class="nav pull-right">
+                    <!-- <li>
+                        <span class="am-icon-language"></span>
+                    </li> -->
+                    <li class="dropdown" id="language_li">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span id="language_flag" class="icon-language-white"></span>
+                            <span id="language_text" data-text="en_US">Language</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul id="language_ul" class="dropdown-menu">
+                            <li onclick="changeLang('zh_CN');"><a href="javascript:void(0);" data-text="zh_CN">简体中文</a></li>
+                            <li onclick="changeLang('en_US');"><a href="javascript:void(0);" data-text="en_US">English</a></li>
+                            <li onclick="changeLang('fr_FR');"><a href="javascript:void(0);" data-text="fr_FR">Français</a></li>
+                            <li onclick="changeLang('ru_RU');"><a href="javascript:void(0);" data-text="ru_RU">Русский</a></li>
+                            <li onclick="changeLang('ar_AE');"><a href="javascript:void(0);" data-text="ar_AE">عربي</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="min">
+        <div class="theme">
+            <div class="theme_ch">中国签证在线填表</div>
+            <div class="theme_en">China Online Visa Application (COVA)</div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+<input type="hidden" value='' id="data"/>
+<input type="hidden" value='{"ApplyCity":"USAA","ApplyCountry":"USA"}' id="specialData"/>
+<input type="hidden" id="qztbphotocookie" value="qztbphoto=;">
+<div class="container">
+    <form role="form" id="personalForm" method="post">
+        <div class="min">
+            <div class="title">
+                <div class="title_left">
+                    <span class="icon-tag-white" id="headFlag"></span>Application ID
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="item">
+                <code>2023111310480970860</code>&emsp;<br/>
+                <div class="applyIdAfterGap">&nbsp;</div>
+                <span class="message">This application ID is needed to retrieve your saved information and book a visa appointment. Please make a note of it. </span>&emsp;
+                <br>
+                <div style="margin-top:10px;color:white;">
+                    <a href="javascript:void(0);" class="messagePrint" onclick="printContent()"><span class="icon-print-black"></span><span>Click here to print your Application ID.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="min">
+            <div class="messageTitle">
+                <span class="icon-tag-white" id="headFlag"></span>Please fill in the form in Chinese or English.
+            </div>
+        </div>
+        <div class="min">
+            <div class="title">
+                <div class="title_left"><span class="icon-tag-white"></span>Where do you plan to apply for Chinese visa?</div>
+            </div>
+            <div class="item">
+                <div class="form-group">
+                    <label class="term_title"><span class="icon-bitianxiang"></span>Country or Region</label>
+                    <select class="select-block-level"  id="ApplyCountry" name="ApplyCountry" disabled></select>
+                </div>
+                <div class="form-group">
+                    <label class="term_title"><span class="icon-bitianxiang"></span>City (Embassy/Consulate)</label>
+                    <select class="select-block-level"  id="ApplyCity" name="ApplyCity" disabled></select>
+                </div>
+            </div>
+        </div>
+        <div class="min">
+            <div class="title">
+                <div class="title_left">
+                    <span class="icon-bitianxiang"></span><span class="icon-lead-out-white"></span>Upload your photo
+                </div>
+            </div>
+            <div class="item">
+                <div class="row-fluid">
+                    <div class="span10">
+                        <div class="span8" class="aaa" style="">
+                            <div class="term_title">Upload Photo:</div><br>
+                            <p class="textCenter">
+                                <a href="javascript:void(0)" class="a-file" onclick="ckzpyq();">Review the Photo Requirements</a>
+                            </p>
+                            <p class="textCenter">
+                                <a href="javascript:void(0)" id="upApplyPersonalPhoto" class="a-file" onclick="uploadQZTBPhoto()">Upload Photo</a>
+                            </p>
+                        </div>
+                        <div class="span4" style="margin-top: 50px;">
+                            <span class="term_content ts" id="file-list"></span>
+                            <br/>
+                            <div id="photoProcessDiv" class="hide">
+                                <br/>
+                                <div id="processButton" class="btn-group" style="text-align:center;">
+                                    <button class="btn" type="button" onclick="toPhotoProcess();">&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;</button>
+                                    <button class="btn" type="button" onclick="closePhotoProcess();">&nbsp;&nbsp;&nbsp;No&nbsp;&nbsp;&nbsp;</button>
+                                </div>
+                                <div id="processInfo">
+                                    <span id="processMsg"></span>
+                                    <!-- 待处理 -->
+                                    <input type="hidden" id="processPhotoPath" name="processPhotoPath" value="">
+                                    <!-- 处理后 -->
+                                    <input type="hidden" id="processedPhotoPath" name="processedPhotoPath" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span2" style="max-width:150px";>
+                        <p class="term_title">Preview Photo:</p>
+                        <img src="qzPhotoController.do?getPhotoByPath" id="zpyl"/>
+                        <input type="hidden" id="photoPath" name="photoPath" value="">
+                        <input type="hidden" id="preProcessPhotoPath" name="preProcessPhotoPath" value="">
+                        <input type="hidden" id="isCheckedPass" name="isCheckedPass" value="">
+                        <input type="hidden" id="failReason" name="failReason" value="">
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="min">
+            <div class="title">
+                <div class="title_left"><span class="icon-tag-white"></span>Name</div>
+                <div class="title_right">Help<span class="icon-question-white tips" data-html="true" data-toggle="tooltip" data-placement="bottom" data-original-title="Family name and given name in English as in passport"></span></div>
+            </div>
+            <div class="item">
+                <div class="form-group">
+                    <label class="term_title">
+                        <span class="icon-bitianxiang"></span>
+                        Family name<span class="normalFontWeight">(as shown on your passport or travel document)</span>&emsp;
+                        <div id="na_FamilyName_div" style="display:inline">
+                            <input type="checkbox"  name="na_FamilyName" id="na_FamilyName" style="vertical-align:sub;"/>
+                            [Not Applicable]
+                        </div>
+                    </label>
+                    <div id="na_FamilyName_containers">
+                        <input class="input-block-level" zhAnden="true" onkeyup="(this.checkTel=function(){this.value=this.value.replace(/[^A-Za-z,-. ]+/,'');}).call(this)" id="PassportFamilyName" maxlength="44" name="PassportFamilyName" type="text"  required=true/>
+                    </div>
+                </div>
+                <div class="form-group" id="nameFlag">
+                    <label class="term_title"><span class="icon-bitianxiang"></span>Given name(s)<span class="normalFontWeight">(as shown on your passport or travel document)</span>&emsp;
+                        <div id="na_FirstName_div" style="display:inline">
+                            <input type="checkbox"  name="na_FirstName" id="na_FirstName" style="vertical-align:sub;"/>
+                            [Not Applicable]
+                        </div>
+                    </label>
+                    <div id="na_FirstName_containers">
+                        <input class="input-block-level" zhAnden="true"  id="PassportFirstName" required="true" maxlength="44" onkeyup="(this.checkTel=function(){this.value=this.value.replace(/[^A-Za-z,-. ]+/,'');}).call(this)" name="PassportFirstName" type="text"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="term_title">Other name(s) or Former name(s)</label>
+                    <input class="input-block-level" zhAnden="true" id="OtherName" maxlength="100" name="OtherName" type="text"   placeholder="Please enter">
+                </div>
+
+                <div class="form-group">
+                    <label class="term_title">Chinese name (if applicable, in Chinese)</label>
+                    <input class="input-block-level" id="LocalName" maxlength="200" name="LocalName" type="text" placeholder="Please enter">
+                </div>
+            </div>
+        </div>
+        <div class="min">
+            <div class="title">
+                <div class="title_left">
+                    <span class="icon-bitianxiang"></span><span class="icon-tag-white"></span>Date of birth
+                </div>
+            </div>
+            <div class="item">
+                <input type="hidden" id="BirthDay" name="BirthDay" >
+                <div class="row-fluid">
+                    <div class="span4">
+                        <label class="term_title" ><span class="icon-bitianxiang"></span>Year</label>
+                        <input type="text" id="Birthday-year" name="Birthday-year" placeholder="YYYY" class="select-block-level" maxlength="4" required="true" digits="true">
+                    </div>
+                    <div class="span4">
+                        <label class="term_title" ><span class="icon-bitianxiang"></span>Month</label>
+                        <select class="select-block-level select-width" id="Birthday-month" name="Birthday-month" onkeydown="IgnoreAlpha(event);"></select>
+                    </div>
+                    <div class="span4">
+                        <label class="term_title" ><span class="icon-bitianxiang"></span>Day</label>
+                        <select class="select-block-level select-width" id="Birthday-day" name="Birthday-day"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min">
+            <div class="title">
+                <div class="title_left">
+                    <span class="icon-bitianxiang"></span><span class="icon-tag-white"></span>Gender
+                </div>
+            </div>
+            <div class="item">
+                <div class="form-group">
+                    <input type="hidden" id="Sex" name="Sex">
+                    <label class="radio-inline term_title"/><input type="radio" name="sex" value="F" id="sex0" />Female</label><label class="radio-inline term_title"/><input type="radio" name="sex" value="M" id="sex1" />Male</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="min">
+            <div class="title">
+                <div class="title_left"><span class="icon-tag-white"></span>Place of birth</div>
+            </div>
+            <div class="item">
+                <div class="form-group">
+                    <label class="term_title" style="display:inline"><span class="icon-bitianxiang"></span>Country or Region</label>
+                    <select class="select-block-level" id="BirthPlaceCountry"  name="BirthPlaceCountry">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="BirthPlaceProvince" name ="BirthPlaceProvince"><!--保存设置的隐藏域-->
+                    <label class="term_title" style="display:inline"><span class="icon-bitianxiang"></span>Province/State</label>
+                    <div class="form-group" id="chn_birthplaceprovince_div" style="display: inline">
+                        <select class="select-block-level" id="chn_birthplaceprovince" name="chn_birthplaceprovince"></select>
+                    </div>
+                    <div class="form-group" id="foreign_birthplaceprovince_div" style="display: none">
+                        <input type="text" zhAnden="true" class="input-block-level" id="foreign_birthplaceprovince" maxlength="40" required=true name ="foreign_birthplaceprovince"  placeholder="Please enter"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="BirthPlaceCity" name ="BirthPlaceCity"><!--保存设置的隐藏域-->
+                    <label class="term_title" style="display:inline"><span class="icon-bitianxiang" id="assssssssex"></span>City</label>
+                    <div class="form-group" id="chn_birthplacecity_div" style="display: inline">
+                        <select class="select-block-level" id="chn_birthplacecity" name="chn_birthplacecity"></select>
+                    </div>
+                    <div class="form-group" id="foreign_birthplacecity_div" style="display: none">
+                        <input type="text" zhAnden="true" class="input-block-level" id="foreign_birthplacecity" maxlength="100" required="true" name ="foreign_birthplacecity" placeholder="Please enter" />
+                    </div>
+                </div>
+                <div class="form-group hide" id="chn_birthplacecounty_div">
+                    <input type="hidden" id="BirthPlaceCounty" name ="BirthPlaceCounty"><!--保存设置的隐藏域-->
+                    <label class="term_title" style="display:inline">Districts/counties(Leave empty if not applicable)</label>
+                    <select class="select-block-level" id="chn_birthplacecounty" name="chn_birthplacecounty"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="min">
+            <div class="title">
+                <div class="title_left">
+                    <span class="icon-bitianxiang"></span><span class="icon-tag-white"></span>Marital status
+                </div>
+            </div>
+            <div class="item">
+                <div class="form-group">
+                    <input type="hidden" name="MaritalStatus" id="MaritalStatus">
+                    <label class="radio-inline term_title"/><input type="radio" name="maritalstatus" value="706001" id="maritalstatus0" />Married</label><label class="radio-inline term_title"/><input type="radio" name="maritalstatus" value="706003" id="maritalstatus1" />Single</label><label class="radio-inline term_title"/><input type="radio" name="maritalstatus" value="706002" id="maritalstatus2" />Divorced </label><label class="radio-inline term_title"/><input type="radio" name="maritalstatus" value="706004" id="maritalstatus3" />Widowed</label><label class="radio-inline term_title"/><input type="radio" name="maritalstatus" value="706005" id="maritalstatus4" />Other</label>
+                </div>
+                <div class="form-group" id="maritalstatusSpecify" style="display: none">
+                    <label class="term_title"><span class="icon-bitianxiang"></span>Please specify</label>
+                    <input type="text" zhAnden="true" class="select-block-level" id="OtherSpecify" maxlength="200" required=true name ="OtherSpecify"  placeholder="Please enter"/>
+                </div>
+            </div>
+        </div>
+        <div class="min">
+            <div class="title">
+                <div class="title_left"><span class="icon-tag-white"></span>Nationality and permanent residence</div>
+                <div class="title_right">Help<span class="icon-question-white tips" data-html="true" data-toggle="tooltip" data-placement="bottom" data-original-title="Please indicate your current nationality and provide your national ID number as is listed in your passport. If you have or have held any nationality other than the one indicated above, please indicate and provide the National ID number. Please provide the following information if you have held Chinese nationality."></span></div>
+            </div>
+            <div class="item">
+                <div class="form-group">
+                    <label class="term_title" style="display:inline"><span class="icon-bitianxiang"></span>Nationality</label>
+                    <select class="select-block-level" id="NationalityCountry" name="NationalityCountry"></select>
+                </div>
+                <div class="form-group">
+                    <label class="term_title" style="display:inline"><span id="countryfdfdj" class="icon-bitianxiang"></span>
+                        National ID number&emsp;
+                        <input type="checkbox" name="bsy_Nationalityid_Card"  id="bsy_Nationalityid_Card" style="vertical-align:sub;"/>[Not Applicable]
+                    </label>
+                    <div id="Nationalityid_Card_Containers">
+                        <input class="input-block-level" zhAnden="true" type="text" id="NationalityIdCard" maxlength="40" required=true name="NationalityIdCard" placeholder="Please enter" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="term_title" style="display:inline"><span class="icon-bitianxiang" id="firstFormerfdkfjkf"></span>Do you hold any other nationality?</label>
+                    <div class="form-group">
+                        <input type="hidden" id="IsHaveOtherNationality" name="IsHaveOtherNationality">
+                        <label class="radio inline"><input type="radio" name="isHaveOtherNationality" id="hasNationality"  value="1">Yes </label>
+                        <label class="radio inline"><input type="radio"	name="isHaveOtherNationality" value="0"   >No </label>
+                    </div>
+                    <!-- 是否有其他国籍模板 -->
+                    <div class="hide item" id="Other_Nationality_Template" >
+                        <input type="hidden" id="OtherNationalityOrder" name="OtherNationalityOrder" >
+                        <div class="form-group">
+                            <label class="term_title" style="display:inline"><span class="icon-bitianxiang"></span>Other nationality</label>
+                            <select id="OtherNationality" name="OtherNationality" class="select-block-level" >
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="term_title">ID number of other nationality</label>
+                            <input class="input-block-level" zhAnden="true" type="text" name="IdNumberOfOtherNationality" maxlength="30" id="IdNumberOfOtherNationality" placeholder="Please enter"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="term_title">Passport number of other nationality</label>
+                            <input class="input-block-level" zhAnden="true" type="text" name="PassportNoOfOtherNationality" maxlength="30" id="PassportNoOfOtherNationality" placeholder="Please enter"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="term_title">Please specify the reason why neither [ID number of other nationality] nor [Passport number of other nationality] is provided.</label>
+                            <textarea class="input-block-level" zhAnden="true" name="JustifyOfOtherNationality" maxlength="100" id="JustifyOfOtherNationality" placeholder="Please enter"></textarea>
+                        </div>
+                        <div class="div-add-delete">
+                            <span class="deleteitem" id="removeNationality"><span class="icon-trash-black"></span>Delete</span>
+                            <span class="additem" id="addNationality"><span class="icon-plus-circle-black"></span>Add</span>
+                        </div>
+                    </div>
+                    <!-- 是否有其他国籍模板结束 -->
+                    <!-- 其他国籍添加 -->
+                    <div id="Other_Nationality_Containers"></div>
+
+                    <label class="term_title" style="display:inline"><span class="icon-bitianxiang"></span>Do you have permanent residence of any other country or region?</label>
+                    <div class="form-group">
+                        <label class="radio inline">
+                            <input type="radio" name="IsHavePermanent" id="IsHavePermanent" value="1"  >Yes </label>
+                        <label class="radio inline">
+                            <input type="radio" name="IsHavePermanent" value="0"  >No </label>
+                    </div>
+                    <div class="form-group hide" id="PermanentInfo">
+                        <label class="term_title"><span class="icon-bitianxiang"></span>Other permanent resident countries or region</label>
+                        <select id="PermanentCountries" name="PermanentCountries" class="select-block-level" >
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="term_title"><span class="icon-bitianxiang"></span>Have you ever held any other nationality?</label>
+                    <div class="form-group">
+                        <input type="hidden" id="IsHaveFormerNationality" name="IsHaveFormerNationality">
+                        <label class="radio inline"><input type="radio"	name="isHaveFormerNationality"  id="haveformernationality" value="1" >Yes </label>
+                        <label class="radio inline"><input type="radio" name="isHaveFormerNationality" value="0"  >No </label>
+                    </div>
+                    <!-- 曾有国籍模板 -->
+                    <div id="Former_Nationality_Template" class="hide item" >
+                        <input type="hidden" id="FormerNationalityOrder" name="FormerNationalityOrder" >
+                        <div class="form-group">
+                            <label class="term_title" style="display:inline"><span class="icon-bitianxiang"></span>Former nationality</label>
+                            <select class="select-block-level" id="FormerNationality" name="FormerNationality">
+                            </select>
+                        </div>
+                        <div class="hide haneys notfirst" id="FormerNationalityIsChina">
+                            <label class="term_title" style="display:inline"><span class="icon-bitianxiang"></span>Is this your first time applying for Chinese visa?</label>
+                            <div class="form-group">
+                                <label class="radio inline">
+                                    <input type="radio" name="isFirstApplyVisaForChina" id="FirstApplyVisaForChina" value="1"  >Yes </label>
+                                <label class="radio inline">
+                                    <input type="radio" name="isFirstApplyVisaForChina" value="0"  >No </label>
+                            </div>
+
+                            <div class="hide haneys" id="ChinesNationlityInfo">
+                                <div class="form-group">
+                                    You need to take your last Chinese travel document with all other supporting documentation when applying for Chinese visa.
+                                </div>
+                                <!-- 20230909需求：中文姓名变更至姓名处采集 -->
+                                <div class="form-group">
+                                    <label class="term_title" style="display:inline"><span class="icon-bitianxiang"></span>Former Chinese ID number&emsp;
+                                        <input type="checkbox" name="bsy_FormerChineseIdNumber"  id="bsy_FormerChineseIdNumber" style="vertical-align:sub;"/>【Not Available】
+                                    </label>
+                                    <div id="FormerChineseIdNumber_Containers" class="haneys">
+                                        <input class="input-block-level" type="text" name="FormerChineseIdNumber" required maxlength="18" minlength="15" id="FormerChineseIdNumber" placeholder="Please enter">
+                                    </div>
+                                    <div id="FormerChineseIdNumber_OtherContainersInfo" class="hide haneys">
+                                        <div class="form-group">
+                                            <label class="term_title"><span class="icon-bitianxiang"></span>Please specify</label>
+                                            <textarea class="input-block-level lessFourtyLoist" required zhAnden="true"  maxlength="200" placeholder="Please enter" name="FormerChineseIdNumberSpecify" id="FormerChineseIdNumberSpecify"></textarea>
+                                        </div>
+                                        This is a mandatory question.If it does not apply to you, please specify the reason. The consular officer who reviews your application will decide whether to approve or deny. You will bear the consequences.
+                                        <div class="div-add-delete">
+												<span class="additem">
+													<label class="radio inline">
+														<input type="radio" class="NotAccept" id="desc_FormerChineseIdNumber" name="FormerChineseIdNumber_Condition" value="0">Decline and return
+													</label>
+												</span>
+                                            <span class="deleteitem">
+													<label class="radio inline">
+														<input type="radio" id="pleaseAcceptFormerChineseIdNumber" name="FormerChineseIdNumber_Condition" value="1">Accept and continue
+													</label>
+												</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="term_title" style="display:inline"><span class="icon-bitianxiang"></span>Number of your Last Chinese passport&emsp;
+                                        <input type="checkbox" name="bsy_LastChinesePassport"  id="bsy_LastChinesePassport" style="vertical-align:sub;"/>【Not Available】
+                                    </label>
+                                    <div id="LastChinesePassport_Containers" class="haneys">
+                                        <input class="input-block-level" zhAnden="true" type="text" maxlength="100" name="LastChinesePassport" onkeyup="(this.checkTel=function(){this.value=this.value.replace(/[^0-9a-zA-Z-.]+/,'');}).call(this)" required=true id="LastChinesePassport" placeholder="Please enter">
+                                    </div>
+                                    <div id="LastChinesePassport_OtherContainersInfo" class="hide haneys">
+                                        <div class="form-group">
+                                            <label class="term_title"><span class="icon-bitianxiang"></span>Please specify</label>
+                                            <textarea class="input-block-level lessFourtyLoist" zhAnden="true" required  maxlength="200" placeholder="Please enter" name="LastChinesePassportSpecify" id="LastChinesePassportSpecify"></textarea>
+                                        </div>
+                                        This is a mandatory question.If it does not apply to you, please specify the reason. The consular officer who reviews your application will decide whether to approve or deny. You will bear the consequences.
+                                        <div class="div-add-delete">
+												<span class="additem">
+													<label class="radio inline">
+														<input type="radio" class="NotAccept" id="desc_LastChinesePassport" name="LastChinesePassport_Condition" value="0">Decline and return
+													</label>
+												</span>
+                                            <span class="deleteitem">
+													<label class="radio inline">
+														<input type="radio" id="pleaseAcceptLastChinesePassport" name="LastChinesePassport_Condition" value="1">Accept and continue
+													</label>
+												</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+                        <div class="div-add-delete">
+                            <span class="deleteitem" id="removeFormernationality"><span class="icon-trash-black"></span>Delete</span>
+                            <span class="additem" id="addFormernationality"><span class="icon-plus-circle-black"></span>Add</span>
+                        </div>
+                    </div>
+                    <!-- 曾有国籍模板结束 -->
+                    <!-- 曾有国籍信息 -->
+                    <div id="Former_Nationality_Containers"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="min">
+            <div class="title">
+                <div class="title_left">
+                    <span class="icon-tag-white" id="passport_assmset"></span>Passport
+                </div>
+
+            </div>
+            <div class="item">
+                <div class="form-group">
+                    <input type="hidden" id="Passport" name="Passport">
+                    <label class="term_title"><span class="icon-bitianxiang"></span>Type of passport/travel document</label>
+                    <label class="radio-inline term_title"/><input type="radio" name="typeOfPassport" value="707003" id="typeOfPassport0" />Diplomatic</label><label class="radio-inline term_title"/><input type="radio" name="typeOfPassport" value="707002" id="typeOfPassport1" />Service</label><label class="radio-inline term_title"/><input type="radio" name="typeOfPassport" value="707004" id="typeOfPassport2" />Official</label><label class="radio-inline term_title"/><input type="radio" name="typeOfPassport" value="707005" id="typeOfPassport3" />Special</label><label class="radio-inline term_title"/><input type="radio" name="typeOfPassport" value="707001" id="typeOfPassport4" />Ordinary</label><label class="radio-inline term_title"/><input type="radio" name="typeOfPassport" value="707006" id="typeOfPassport5" />Other</label>
+                </div>
+                <div class="form-group" id="otherpassportinfoid" style="display: none">
+                    <label class="term_title"><span class="icon-bitianxiang"></span>Please specify</label>
+                    <input type="text" zhAnden="true" class="select-block-level" id="OtherPassportInfo" maxlength="200" required=true name ="OtherPassportInfo"  placeholder="Please enter"/>
+                </div>
+                <div class="form-group">
+                    <label class="term_title"><span class="icon-bitianxiang"></span>Passport/travel document number</label>
+                    <input class="input-block-level" zhAnden="true" type="text" id="PassportNo" maxlength="12" minlength="1" required=true  name="PassportNo" placeholder="Please enter">
+                </div>
+                <div class="form-group">
+                    <label class="term_title"><span class="icon-bitianxiang"></span>Issuing country or region</label>
+                    <select class="select-block-level" id="IssueCountry" name="IssueCountry">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="term_title"><span class="icon-bitianxiang"></span>Place of issue</label>
+                    <input class="input-block-level" zhAnden="true" type="text" id="IssuePlace" maxlength="60" name="IssuePlace" required=true  placeholder="Please enter">
+                </div>
+                <!-- 20230909签发机关、签发日期删除 -->
+                <div class="row-fluid">
+                    <label class="term_title"><span class="icon-bitianxiang"></span>Expiration date</label>
+                    <input type="hidden" id="ExpirationDate" name="ExpirationDate" >
+                    <div class="am-form form-inline">
+                        <div class="span4">
+                            <label class="term_title" ><span class="icon-bitianxiang"></span>Year</label>
+                            <input type="text" id="Expirationdate-year" name="Expirationdate-year" placeholder="YYYY" class="select-block-level" maxlength="4" required="true" digits="true">
+                        </div>
+                        <div class="span4">
+                            <label class="term_title" ><span class="icon-bitianxiang"></span>Month</label>
+                            <select class="select-block-level select-width" id="Expirationdate-month" name="Expirationdate-month"></select>
+                        </div>
+                        <div class="span4">
+                            <label class="term_title" ><span class="icon-bitianxiang"></span>Day</label>
+                            <select class="select-block-level select-width" id="Expirationdate-day" name="Expirationdate-day"></select>
+                        </div>
+                    </div>
+                </div>
+                Please ensure that your passport is valid for no less than 6 months.
+            </div>
+        </div>
+        <!-- 20230909 丢失护照旅行证件删除-->
+        <div class="min">
+            <div class="title step">
+                <div class="title_right">
+                    <button class="btn btn-success" type="button" onclick="savePersonInfo('saveandnext');">Save and Next<span class="icon-arrow-right-white"></span></button>
+                </div>
+                <div class="title_right">
+
+                    <button id="personal_save" class="btn btn-success" type="button" onclick="savePersonInfo('save');">Save<span class="icon-save-white"></span></button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<input value="[Year] has not been completed" type="hidden" id="yearId">
+<input value="[Month] has not been completed" type="hidden" id="monthId">
+<input value="[Day] has not been completed" type="hidden" id="dayId">
+<input value="Please select" type="hidden" id="selectId">
+<input value="Please enter" type="hidden" id="inputId">
+<input value="Incorrect email address. Please enter a valid [Email address]." type="hidden" id="checkemailId">
+<input value="You can only add no more than five items." type="hidden" id="addmorefiveId">
+<input value="You must keep at least one item." type="hidden" id="lesssaveoneId">
+<input value="Saved Successfully" type="hidden" id="SaveandsuccessId">
+<input value="Country code" type="hidden" id="countrycodeId">
+<input value="Please enter a valid year (1900-2100)" type="hidden" id="youxiaodateId">
+<input value="Please enter numbers" type="hidden" id="dateisnotintId">
+<input value="[Date of birth] must be earlier than today, Please revise [Date of birth]." type="hidden" id="beginandcurrentId">
+<input value="Application ID is needed for retrieving your information. Please keep it well in your possession. Do you want to return to the homepage?" type="hidden" id="nav_roteId">
+<input value="Please complete the COVA form in order" type="hidden" id="nav_sortId">
+<input value="Please select" type="hidden" id="qxzId">
+<input value="" type="hidden" id="alertTitle">
+<input value="Ok" type="hidden" id="alertButtonText">
+<input value="Cancel" type="hidden" id="cancelButtonText">
+<input value="Save Unsuccessfully" type="hidden" id="save_falseId">
+<input value="Your application is submitted. You cannot make any changes." type="hidden" id="visaFormHavingSubmitId">
+
+
+<input type="hidden" value="Please select the [Country or Region] to process your visa application" id="ApplyCountry_tishi">
+<input type="hidden" value="[City (Embassy/Consulate)] has not been completed" id="ApplyCity_tishi">
+
+<input type="hidden" value="[Last name] has not been completed" id="hzsdxId"><!-- 姓 -->
+<input type="hidden" value="[Given name(s)] has not been completed" id="hzsdmId"><!-- 名 -->
+<input type="hidden" value="[Middle name] has not been completed" id="MiddleName_tishi"/> <!-- 中间名 -->
+<input type="hidden" value="[Name in native language] has not been completed" id="bgyyxmId"><!-- 本族裔姓名 -->
+
+<input type="hidden" value="[Date of birth] has not been completed" id="qtxcsrqId"><!-- 请选择出生日期 -->
+<input type="hidden" value="[Date of birth] has not been completed" id="PleaseInputBirthdata"><!-- 请输入出生日期 -->
+<input type="hidden" value="[Date of birth] must be earlier than today" id=""><!-- 出生日期与当前日期对比 -->
+<input type="hidden" value="[Gender] has not been completed" id="qxzxbId"><!-- 性别 -->
+
+<input type="hidden" value="Please select the place of birth [Country or Region]" id="csddgjId"><!-- 出生地的国家或地区 -->
+<input type="hidden" value="Please select the place of birth [Province/State]" id="csddsfId"><!-- 请选择出生地的省份-->
+<input type="hidden" value="Please select the place of birth [Province/State]" id="InputBirthplaceProvinces"><!-- 请输入出生地的省份-->
+<input type="hidden" value="Please enter the place of birth [City]" id="csddcsId"><!-- 请选择出生地的城市 -->
+<input type="hidden" value="Please enter the place of birth [City]" id="InputBirthplaceCity"><!-- 请输入出生地的城市 -->
+<input type="hidden" value="Please choose District/County of birth place" id="selectBirthplaceCounty"><!-- 请选择出生地的区/县 -->
+
+<input type="hidden" value="[Marital status] has not been completed" id="qxzhxzkId"><!-- 婚姻状况 -->
+<input type="hidden" value="[Please specify] pertaining to marital status has not been completed" id="MarriageStatusSpecify"><!-- 婚姻状况说明 -->
+
+<input type="hidden" value="[Current nationality] has not been completed" id="xygjId"><!-- 现有国籍 -->
+<input type="hidden" value="[National ID number] has not been completed" id="gjgsfzhmId"><!-- 国籍国身份证号码 -->
+<input type="hidden" value="The question [Do you currently hold permanent resident status in Hong Kong, Macao and Taiwan area at the same time?]has not been answered" id="IsHaveHkMaoTwPerResidentStatusId"><!-- 是否同时拥有港澳台永久居民身份 -->
+<input type="hidden" value="[Permanent resident status in Hong Kong, Macao and Taiwan] has not been completed" id="HkMaoTwPerResidentStatusId"><!-- 港澳台永久居民身份 -->
+<input type="hidden" value="The question [Do you hold any other nationality?] has not been answered" id="sfyqtgjId"><!-- 是否有其他国籍 -->
+<input type="hidden" value="[Other nationality] has not been completed" id="qtgjgjId"><!-- 其他国籍 -->
+<input type="hidden" value="Because you are holding Chinese nationality, you can not apply for Chinese Visa." id="qtgjwzgId"><!-- 其他国籍为中国 -->
+<input type="hidden" value="[Is this your first time applying for Chinese visa?] has not been completed" id="FirstApplyingChineseVisaId"><!-- 请选择是否是第一次申请中国签证 -->
+<input type="hidden" value="Please answer questions in [Previous Chinese visa] box on page 8." id="qtgjbwzgId"><!-- 其他国籍不为中国 -->
+<input type="hidden" value="[ID number of other nationality] has not been completed" id="qtgjsfzjhmId"><!-- 其他国籍身份证件号码 -->
+<input type="hidden" value="Please enter [passport number of other nationality]" id="PassportNumbersOfOtherNationlity"><!-- 其他国籍护照号码 -->
+<input type="hidden" value="Please specify the reason why neither [ID number of other nationality] nor [Passport number of other nationality] is provided." id="JustifyOfOtherNationlityIDNo"><!-- 其他国籍证件号码无法提供原因 -->
+<input type="hidden" value="Please select [other permanent residnet counries or region]" id="OtherPermanentResidentCountriesOrRegion"><!-- 其他国家永久居留-->
+<input type="hidden" value="The question [Do you have permanent residence of any other country or region?] has not been answered" id="IsHaveOtherPermanentResidentId"><!-- 有其他国家永久居民身份 -->
+<input type="hidden" value="The question [Have you ever held any other nationality?] has not been answered" id="xzcygjId"><!-- 是否曾有国籍 -->
+<input type="hidden" value="[Former nationality] has not been completed" id="cygjgjId"><!-- 曾有国籍 -->
+<input type="hidden" value="[Chinese name] has not been completed" id="cygjzwmId"><!-- 曾有中国国籍中文名 -->
+<input type="hidden" value="Invalid Chinese ID number! It is 15-digit accepting only numbers, or 18-digit ended with a number or X." id="zwxmcdbd"><!-- 曾有中国国籍中文名 -->
+<input type="hidden" value="[Former Chinese ID number] has not been completed" id="cyzgsfzjhmId"><!-- 曾有中国国籍身份证号码 -->
+<input type="hidden" value="[Please specify] pertaining to the question "why you are unable to provide a former Chinese ID number" has not been completed" id="IdNotProvideReasonId"><!-- 曾有中国国籍身份证号码说明 -->
+<input type="hidden" value="Please select whether to accept" id="IdNotProvideAcceptExplainId"><!-- 接受并继续-->
+<input type="hidden" value="[Last Chinese passport number] has not been completed" id="zhzghzhmId"><!-- 曾持有的最后一本中国护照号码 -->
+<input type="hidden" value="[Please specify] pertaining to the question "why you are unable to provide the number of your last Chinese passport" has not been completed" id="PassportNotProvideReasonId"><!-- 曾持有的最后一本中国护照号码说明-->
+<input type="hidden" value="Please select whether to accept" id="PassportNotProvideAcceptExplainId"><!-- 接受并继续-->
+<input type="hidden" value="More Details Please" id="SpecifyCanNotLessFourtyId"><!-- 不能少于40个字母或者汉字 -->
+<input type="hidden" value="Not Available" id="CouldNotProvideId"><!-- 无法提供-->
+<input type="hidden" value="[Type of passport/travel document] has not been completed" id="hzlxzjzlId"><!-- 护照/旅行证件种类 -->
+<input type="hidden" value="[Please specify] pertaining to the type of passport/travel document has not been completed" id="hzlxzjzlsmId"><!-- 护照/旅行证件种类说明 -->
+<input type="hidden" value="[Passport/Travel document number] has not been completed" id="hzlxzjhmId"><!-- 护照/旅行证件号码 -->
+
+<input type="hidden" value="Please select the [Issuing country or region] of passport/travel document" id="hzxxqfgjId"><!-- 签发国家或地区 -->
+<input type="hidden" value="[Issuing Place] of passport/travel document has not been completed" id="hzxxqfddId"><!-- 签发地 -->
+<input type="hidden" value="[Expiration date] of passport/travel document has not been completed" id="visa_end_dateId"><!-- 请选择护照失效日期 -->
+<input type="hidden" value="[Expiration date] of passport/travel document has not been completed" id="InputPassportIExpirationDate"><!-- 请输入护照失效日期 -->
+<input type="hidden" value="[Expiration date] of passport/travel document cannot be earlier than today" id="visa_end_current_dateId"><!-- 护照失效日期与当前时间比较 -->
+<input type="hidden" value="Please upload a [Photo]" id="PleaseUploadYourPhotosId"><!-- 上传申请人照片 -->
+
+<input type="hidden" value="Invalid Chinese ID number! It is 15-digit accepting only numbers, or 18-digit ended with a number or X." id="IdCardLengthOrRuleError"><!-- 身份证长度错误或者不符合规定 -->
+<input type="hidden" value="Incorrect date of birth in the Chinese ID number" id="IdCardBirthDateError"><!-- 输入的中国身份证件号码里出生日期不对！ -->
+<input type="hidden" value="Invalid Chinese ID number " id="IdCardCheckCodeError"><!-- 18位中国身份证件号码的校验码不正确！最后一位应该为X -->
+<input type="hidden" value="You may select more than one countries/regions" id="CountriesRegions_inputId"/><!-- 可以选择多个国家-->
+
+<input type="hidden" value="Your photo didn&apos;t pass quality checks and wasn&apos;t uploaded successfully, you can continue to fill in other items. Please submit your qualified photo together with your visa application." id="jc1"/><!-- 照片检测信息 -->
+<input type="hidden" value="Upload successfully." id="jc2"/><!-- 照片检测信息 -->
+<input type="hidden" value="" id="jc3"/><!-- 照片检测信息 -->
+<input type="hidden" value="Unfortunately, the system is unable to automatically adjust the photo. Please upload another photo." id="adjustPhotoFailed"/><!-- 照片处理失败信息 -->
+
+
+<div class="footer bg_color">
+    <div class="container">
+        <p>Copyright©1998-2014, Ministry of Foreign Affairs, the People&apos;s Republic of China&emsp;&emsp;&emsp;</p>
+    </div>
+</div>
+
+<!-- 加载静态数据
+<script type="text/javascript" src="./plug-in/jquery/jquery-1.8.3.min.js?__s_version=1.1.3"></script>-->
+<script type="text/javascript" src="./plug-in/bootstrap/js/bootstrap.js?__s_version=1.1.3"></script>
+<!--[if lte IE 9 ]>
+<script type="text/javascript" src="./plug-in/bootstrap/js/html5.min.js?__s_version=1.1.3"></script>
+<script type="text/javascript" src="./plug-in/bootstrap/js/respond.min.js?__s_version=1.1.3"></script>
+<script type="text/javascript" src="./plug-in/jquery-plugs/jquery.placeholder.min.js?__s_version=1.1.3"></script>
+<script type="text/javascript" src="./plug-in/jquery-plugs/iealert/iealert.js?__s_version=1.1.3"></script>
+<![endif]-->
+<!--[if lte IE 6]>
+<script type="text/javascript" src="./plug-in/bootstrap/js/bootstrap-ie.js?__s_version=1.1.3"></script>
+<![endif]-->
+
+<!-- 验证插件 -->
+<script type="text/javascript" src="./plug-in/jquery-plugs/jquery-validation-1.14.0/jquery.validate.js?__s_version=1.1.3"></script>
+
+<!-- 可搜索下拉框插件
+<script type="text/javascript" src="./plug-in/jquery-plugs/select2/select2min.js?__s_version=1.1.3"></script>
+-->
+<!--日期控件 -->
+<script type="text/javascript" src="./plug-in/jquery-plugs/datetimepicker/js/bootstrap-datetimepicker.min.js?__s_version=1.1.3"></script>
+<script type="text/javascript" src="./plug-in/jquery-plugs/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js?__s_version=1.1.3"></script>
+
+<!-- 共用js -->
+<script type="text/javascript" src="./plug-in/artDialog/jquery.artDialog.js?__s_version=1.1.3"></script>
+<script type="text/javascript" src="./plug-in/sino/ui/qztb/js/qzCoCommon-util.js?__s_version=1.1.3"></script>
+
+<script type="text/javascript" src="./plug-in/sino/ui/qztb/data/data.js?__s_version=1.1.3"></script>
+
+<!-- 不适用列表 js -->
+<script type="text/javascript" src="./plug-in/sino/ui/qztb/js/qzNoteApplyList.js?__s_version=1.1.3"></script>
+
+<!-- 控制浏览器版本iealert js -->
+<script src="./plug-in/iealert/iealert.js" type="text/javascript"></script>
+<!-- 动态加载插件语言包 -->
+<script>
+    if(lang && lang == "zh_CN"){
+        document.write("<script src='./plug-in/jquery-plugs/jquery-validation-1.14.0/localization/messages_zh.js?__s_version=1.1.3'><\/script>");
+        document.write("<script src='./plug-in/jquery-plugs/select2/i18n/zh-CN.js?__s_version=1.1.3'><\/script>");
+    }else if(lang && lang == "ar_AE"){
+        // 语言包扩展
+        document.write("<script src='./plug-in/jquery-plugs/jquery-validation-1.14.0/localization/messages_ar.js?__s_version=1.1.3'><\/script>");
+        document.write("<script src='./plug-in/jquery-plugs/select2/i18n/ar.js?__s_version=1.1.3'><\/script>");
+    }else if(lang && lang == "ru_RU") {
+        document.write("<script src='./plug-in/jquery-plugs/jquery-validation-1.14.0/localization/messages_ru.js?__s_version=1.1.3'><\/script>");
+        document.write("<script src='./plug-in/jquery-plugs/select2/i18n/ru.js?__s_version=1.1.3'><\/script>");
+    }else if(lang && lang == "fr_FR") {
+        document.write("<script src='./plug-in/jquery-plugs/jquery-validation-1.14.0/localization/messages_fr.js?__s_version=1.1.3'><\/script>");
+        document.write("<script src='./plug-in/jquery-plugs/select2/i18n/fr.js?__s_version=1.1.3'><\/script>");
+    }
+    //$("body").iealert();
+</script>
+<script type="text/javascript">
+    //禁止后退键 作用于Firefox、Opera
+    document.onkeypress=banBackSpace;
+    //禁止后退键 作用于IE、Chrome
+    document.onkeydown=banBackSpace;
+    //处理键盘事件 禁止后退键（Backspace）密码或单行、多行文本框除外
+    function banBackSpace(e){
+        var ev = e || window.event;//获取event对象
+        var obj = ev.target || ev.srcElement;//获取事件源
+        var t = obj.type || obj.getAttribute('type');//获取事件源类型
+        //获取作为判断条件的事件类型
+        var vReadOnly = obj.getAttribute('readonly');
+        var vEnabled = obj.getAttribute('enabled');
+        //处理null/undefined值情况
+        vReadOnly = (vReadOnly == null || vReadOnly == undefined) ? false : vReadOnly;
+        vEnabled = (vEnabled == null || vDisabled == undefined) ? true : vEnabled;
+        //当敲Backspace键时，事件源类型为密码或单行、多行文本的，
+        //并且readonly属性为true或enabled属性为false的，则退格键失效
+        var flag1=(ev.keyCode == 8 && (t=="password" || t=="text" || t=="textarea" || t=="search" || t=="email") && (vReadOnly==true || vEnabled!=true))?true:false;
+        //当敲Backspace键时，事件源类型非密码或单行、多行文本的，则退格键失效
+        var flag2=(ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea" && t !="search"  && t !="email") ?true:false;
+        //判断
+        if(flag2){
+            return false;
+        }
+        if(flag1){
+            return false;
+        }
+    }
+</script>
+
+
+
+
+<!-- 右侧导航 -->
+<div class="rightNav">
+    <a href="javascript:void(0);" data-text="001" title='Home Page'><em>1</em>Home Page</a>
+    <a href="javascript:void(0);" data-text="002" title='Personal Information'><em>2</em>Personal Information</a>
+    <a href="javascript:void(0);" data-text="003" title='Type of Visa'><em>3</em>Type of Visa</a>
+    <a href="javascript:void(0);" data-text="004" id="work" title='Work Information'><em>4</em>Work Information</a>
+    <a href="javascript:void(0);" data-text="005" id="education" title='Education'><em>5</em>Education</a>
+    <a href="javascript:void(0);" data-text="006" title='Family Information'><em>6</em>Family Information</a>
+    <a href="javascript:void(0);" data-text="007" title='Information About Your Intended Trip'><em>7</em>Information About Your Intended Trip</a>
+    <a href="javascript:void(0);" data-text="008" title='Past Travel InformationL327'><em>8</em>Past Travel InformationL327</a>
+    <a href="javascript:void(0);" data-text="009" title='Other Information'><em>9</em>Other Information</a>
+    <a href="javascript:void(0);" data-text="010" title="For Person filling in the application on the applicant&apos;s behalf"><em>10</em>For Person filling in the application on the applicant&apos;s behalf</a>
+
+    <a href="javascript:void(0);" data="1" id="gototop" title='Return to Top'><em><span class="icon-up-white"></span></em>Return to Top</a>
+    <a href="javascript:void(0);" data="2" id="gotoshoworhide" title='Close'><em><span class="icon-double-right-white"></span></em></em>Close</a>
+
+</div>
+<script type="text/javascript">
+
+    var finishStep = '001';
+    var currentPageId = '002';
+    var datatext;
+
+    var isChildren = '';
+    if(isChildren && isChildren == "true") {
+        $("#work").addClass("rightA");
+        $("#education").addClass("rightA");
+    }
+
+    $(document).ready(function(){
+
+        if(finishStep && (parseInt(finishStep, 10) > 10)){
+            finishStep = "010";
+        }
+        var finishnav = $(".rightNav a[data-text='" + finishStep + "']");
+        //添加预览按钮
+        var PreviewNav = $("<a href='qzCoCommonController.do?show&pageId=" + getKey("011") + addLangToUrl() + "' data-text='011'><em>11</em>Review</a>");
+        if(finishStep && (parseInt(finishStep, 10) == 10)){
+            finishnav.after(PreviewNav);
+            PreviewNav.find("em").addClass("finishednav");
+        }
+
+        //添加完成效果样式
+        finishnav.find("em").eq(0).html("<span class=\"icon-duihao-white\"></span>").addClass("finishednav");
+        finishnav.prevAll().each(function(){
+            $(this).find("em").eq(0).html("<span class=\"icon-duihao-white\"></span>").addClass("finishednav");
+        });
+        $(".rightNav a[data-text='" + currentPageId + "']").addClass("current");
+    });
+    $(".rightNav a[data]").on("click",function(e){
+        e.preventDefault();
+    });
+    //添加跳转验证
+    $(".rightNav a[data-text]").on("click",function(e){
+        e.preventDefault();
+        datatext = $(this).attr("data-text");
+        var thisClass = $(this).attr("class");
+        if(thisClass && thisClass.indexOf("rightA") > -1) {
+        }else if(parseInt(datatext, 10) == 1){
+            art.dialog({
+                id: "alerter",
+                fixed: true,
+                width: '25%',
+                title:$("#alertTitle").val(),
+                content: $("#nav_roteId").val(),
+                button: [
+                    {
+                        name: $("#alertButtonText").val(),
+                        callback: function () {
+                            location.href = "qzCoCommonController.do?show&pageId=" + getKey(datatext) + addLangToUrl();
+                        }
+                    },
+                    {
+                        name: $("#cancelButtonText").val(),
+                        focus: true
+                    }
+                ]
+            });
+        }else if(parseInt(datatext) <= (parseInt(finishStep) + 1)){
+            location.href = "qzCoCommonController.do?show&pageId=" + getKey(datatext) + addLangToUrl();
+        }else{
+            alertMessage($("#nav_sortId").val());
+        }
+    });
+</script>
+<script type="text/javascript" src="./plug-in/sino/uploadFile/ajaxfileupload.js?__s_version=1.1.3"></script>
+<script type="text/javascript" src="/plug-in/sino/ui/qztb/js/qzCoCommon-personal.js?__s_version=1.1.3"></script>
+</body>
