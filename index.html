@@ -80,19 +80,23 @@
         }
 
         .total-box{
-            background-color: #0b3898; /* Adjust the blue color as needed */
+            background-color: #13398c; /* Adjust the blue color as needed */
             color: #ffffff;
             width: 98%;
             padding: 5px;
             margin-top: 5px;
             font-weight: bolder;
+            height: 100px; /* Set a fixed height */
+            overflow: hidden; /* Hide overflow content */
         }
         .currency{
             float: left;
             font-size: 16px;
             color: white;
         }
-
+        .reset{
+            margin-top: 8px;
+        }
     </style>
 </head>
 <div class="content-box">
@@ -204,7 +208,7 @@
                                     </table> <p><span>　　</span></p> <p><span>　　<strong>3. Language requirements</strong></span></p> <p><span>　　*If you choose Chinese-taught course, you should have an appropriate Chinese proficiency Report(HSK scores for the Chinese proficiency test; if the applicant chooses the Chinese language training or preparatory courses, no HSK scores are needed).</span></p> <p><span>　　*If you choose an English course, you should have the appropriate level of English (IELS or TOEFL scores, if the applicant"s native language is English, no IELS or TOEFL scores are needed)。</span></p> <p><span>　　</span></p> <p><span>　　</span><strong><span>II&nbsp;&nbsp;</span>
 
                                     <p><strong><span>II&nbsp;&nbsp;</span><span>Study expenses (for self-financed students)</span></strong></p>
-                                <div class="blue-box">
+                                    <div class="blue-box">
                                     <p><span>Area of Study</span></p>
                                     <select id="areaOfStudy">
                                         <option value="Default">Select Area of Study</option>
@@ -218,7 +222,7 @@
                                     <select id="degreeProgram">
                                         <option value="Default">Select Degree Program</option>
                                         <option value="Undergraduate">Undergraduate</option>
-                                        <option value="Post-Graduate and Researcher">Post-Graduate and Researcher</option>
+                                        <option value="Post-Graduate and Researcher">Post-Graduate or Researcher</option>
                                         <option value="PhD">PhD</option>
                                     </select>
                                 </div>
@@ -240,6 +244,7 @@
                                         <option value="Single Bed">Single Bed</option>
                                         <option value="Double Bed">Double Bed</option>
                                     </select>
+
                                 </div>
                                     <div class="base-box">
                                         <p><span>Base Costs: this includes ¥1600 (or $220) to cover Registration Fee and Textbooks</span></p>
@@ -251,11 +256,17 @@
                                         <div class="currency">
                                             <span id="currencySymbol"></span><span id="currency"></span>
                                         </div>
+                                        <div class="convert">
+                                            <button id="convertToUSDButton">Convert to USD</button>
+                                            <button id="convertToYuansButton" style="display: none;">Convert to Yuan</button>
+                                        </div>
                                     </div>
 
-                                    <button id="convertToUSDButton">Convert to USD</button>
-                                    <button id="convertToYuansButton" style="display: none;">Convert to Yuan</button>
+                                    <div class = "reset">
+                                        <button id="resetButton">Reset Fields</button>
+                                    </div>
                                 </strong>
+
                             </tr>
                             <tr>
                                 <td colspan="5"> <p><span>　　</span></p> </td>
@@ -270,8 +281,9 @@
                     document.addEventListener("DOMContentLoaded", function () {
                         const selects = document.querySelectorAll("select");
                         const totalInput = document.getElementById("total");
-                        let currency = "Yuan";
+                        let currency = "Yuan"
                         let originalTotal = 1600;
+
                         function convertToUSD(totalInYuans) {
                             const exchangeRate = 0.14; // Example exchange rate: 1 Yuan = 0.15 USD
                             return totalInYuans * exchangeRate;
@@ -331,6 +343,7 @@
                         convertToYuansButton.addEventListener("click", convertAndUpdateToYuans);
 
 
+
                         const areaOfStudySelect = document.getElementById("areaOfStudy");
                         const degreeProgramSelect = document.getElementById("degreeProgram");
 
@@ -369,6 +382,20 @@
                                 "Double Bed": 17920,
                             }
                         };
+
+                        const resetButton = document.getElementById("resetButton");
+                        resetButton.addEventListener("click", resetFields);
+
+                        function resetFields() {
+                            selects.forEach((select) => {
+                                select.value = "Default";
+                            });
+
+                            totalInput.value = originalTotal;
+                            currency = "Yuan";
+                            convertToYuansButton.style.display = "none";
+                            convertToUSDButton.style.display = "block";
+                            updateTotalDisplay();}
 
                         function updateLengthOfStayValues() {
                             const selectedValue = lengthOfStaySelect.value;
