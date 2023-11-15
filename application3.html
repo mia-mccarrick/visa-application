@@ -126,6 +126,13 @@
         margin-bottom: 10px;
         flex-direction: row-reverse;
     }
+    .country-code{
+        height: 25px;
+    }
+    .phone-input{
+        height: 30px;
+        width: 300px;
+    }
 
 </style>
 <title>Chinese Visa Questionnaire</title>
@@ -142,56 +149,101 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Type of Visa</label>
+    <label>Occupation Area</label>
     <div class="sub-box">
         <select style="height: 33px; width: 300px">
-        <option></option>
-        <option>Tourism (Visa Type: L)</option>
-        <option>Commercial Trade (Visa Type: M)</option>
-        <option>Exchange Program (Visa Type: F)</option>
-        <option>Family Member of Chinese Citizen (Visa Type: F)</option>
+            <option></option>
+            <option>Computer and Mathematical</option>
+            <option>Business and Financial</option>
+            <option>Community and Social</option>
+            <option>Arts, Design, Entertainment, or Media</option>
+            <option>Education</option>
+            <option>Management</option>
+            <option>Life, Physical, and Social Science</option>
+            <option>Student</option>
+            <option>Other</option>
         </select>
     </div>
 </div>
 
 <div class="questionnaire-box">
-    <label>Service Speed </label>
+    <label>Most Recent Work Experience</label>
     <div class="sub-box">
+        <label>Are you currently employed?</label>
         <div class="choice-option">
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">Normal</label>
+            <input type="radio" id="yes" name="gender" value="male">
+            <label for="yes">Yes</label>
         </div>
 
         <div class="choice-option">
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">Express (travel in a month or less)</label>
+            <input type="radio" id="no" name="gender" value="female">
+            <label for="no">No</label>
         </div>
     </div>
-</div>
-
-
-<div class="questionnaire-box">
-    <label>Application Details </label>
     <div class="sub-box">
-        <label>Number of Entries to China</label>
+        <label>If you answered "Yes" above:</label>
         <div class="sub-sub-box">
-            <div class="choice-option">
-                <input type="radio" id="one" name="gender" value="male">
-                <label for="male">One</label>
+            <label>Position/Role: </label>
+            <input type="text">
             </div>
-            <div class="choice-option">
-                <input type="radio" id="two" name="gender" value="female">
-                <label for="female">Two</label>
+        <div class="sub-sub-box">
+            <label>Employment Date Start: </label>
+            <label for="month">Month:</label>
+            <select id="month" style="height: 33px; width: 300px">
+                <option></option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+
+                <label style="margin-top: 10px">Year</label>
+                <input type="text" style="width: 300px;" >
             </div>
-            <div class="choice-option">
-                <input type="radio" id="multi" name="gender" value="female">
-                <label for="female">Multiple (> 2)</label>
-            </div>
+        <div class="sub-sub-box">
+        <label>Name of Employer: </label>
+        <input type="text" style="width: 300px">
         </div>
-        <label>Maximum Duration of Longest Stay (days)</label>
-        <input type="text" style="width: 300px; margin-left: 10px;">
+
+    <div class="sub-sub-box">
+        <label>Employer Address: </label>
+        <div class="sub-sub-box">
+            <label>Street Address</label>
+            <input type="text">
+            <label>City</label>
+            <input type="text">
+            <label>State</label>
+            <input type="text">
+            <label>ZipCode</label>
+            <input type="text">
+        </div>
+    </div>
+
+        <div class="sub-sub-box">
+            <label>Employer Phone Number</label>
+            <select class="country-code" id="country-code">
+                <option>+ Country Code</option>
+                <option value="+1">+1 United States</option>
+                <option value="+93">+93 Afghanistan</option>
+                <option value="33">+33 France</option>
+                <option value="+39">+39 Italy</option>
+                <option value="+254">+254 Kenya</option>
+                <option value="+856">+856 Laos</option>
+            </select>
+            <input type="tel" class="phone-input" id="phone-number" placeholder="123-123-1234">
+        </div>
     </div>
 </div>
+</div>
+
 
 <a href="application3.html" id="next-button">Next</a>
 
@@ -236,6 +288,7 @@
             dropdown.append(option);
         });
     });
+
 
 </script>
 
