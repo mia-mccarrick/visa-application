@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.rawgit.com/umpirsky/country-list/master/data/en/countries.json"></script>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #0f4688;
+    }
+
+    .questionnaire-box {
+        background-color: #fff;
+        border: 2px solid #333;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .sub-box {
+        background-color: #97caf3;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        flex-direction: row-reverse;
+    }
+
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #012f72;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .progress-bar {
+        background-color: #ddd;
+        height: 400px;
+        width: 80px;
+        position: fixed;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .progress-item {
+        width: 20px;
+        height: 20px;
+        background-color: #4caf50;
+        border-radius: 50%;
+        margin: 5px 0;
+    }
+
+    .progress-label {
+        font-size: 12px;
+        text-align: center;
+    }
+
+
+    .speed-option{
+        margin-right: 20px;
+        align-items: center;
+    }
+
+    input[type="radio"] {
+        margin-right: 5px;
+        width: 20px; /* Adjust the width of the radio button */
+        height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .choice-option {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+
+    #next-button {
+        float: right;
+        height: 30px;
+        width: 150px;
+        font-size: 24px;
+        margin-bottom: 30px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #yesBox{
+        display: none;
+    }
+
+
+</style>
+<title>Chinese Visa Questionnaire</title>
+</head>
+<body>
+
+<img src="img/logo.jpg" height="100" width="500">
+
+<div class="questionnaire-box">
+    <label for="application-id">Application ID:</label>
+    <p>Please save your Application ID if you do not plan on completing your application in one-sitting.</p>
+    <input type="text" id="application-id" value="123-456-789" readonly>
+    <button onclick="printApplicationID()">Print ID</button>
+</div>
+
+<div class="questionnaire-box">
+    <label>Have you ever been refused a Chinese visa or entry into China?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
+</div>
+
+<div class="questionnaire-box">
+    <label>Have you ever had a Chinese visa that was cancelled?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes1" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no1" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
+</div>
+
+<div class="questionnaire-box">
+    <label>Do you ever entered China illegally, overstayed, or worked illegally?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes2" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no2" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
+</div>
+
+<div class="questionnaire-box">
+    <label>Do you have a criminal record in any country?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes3" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no3" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
+</div>
+
+<div class="questionnaire-box">
+    <label>Do you have any serious mental disorders or infectious diseases?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes4" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no4" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
+</div>
+
+<div class="questionnaire-box">
+    <label>In the past 30 days, have you ever visted a region with an epidemic?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes5" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no5" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
+</div>
+
+
+<div class="questionnaire-box">
+    <label>Have you ever been trained in the field of firearms, explosives, nuclear devices, or biological or chemical products?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes6" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no6" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
+</div>
+
+<div class="questionnaire-box">
+    <label>Are you or have you ever served in the military?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes7" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no7" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
+</div>
+
+<div class="questionnaire-box">
+    <label>Have you served or participated in any paramilitary organization, civil armed forces, or guerrilla forces??</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes8" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no8" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
+</div>
+
+<div class="questionnaire-box">
+    <label>Do you work for any social or charitable organization?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes9" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no9" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
+</div>
+
+<div class="questionnaire-box">
+    <label>Did anyone else assist you in completint this application?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes11" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="n1" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
+</div>
+
+<div class="questionnaire-box">
+    <label>Is there anything else you want to declare?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes10" name="gender" value="male" onclick="showPopUp()">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no10" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
+    <p id="yesBox">NOT YET IMPLEMENTED</p>
+</div>
+
+
+
+
+<a href="application8.html" id="next-button">Next</a>
+
+<div class="progress-bar">
+    <div class="progress-item" title="Home Page"></div>
+    <div class="progress-label">Home Page</div>
+    <div class="progress-item" title="Personal Information"></div>
+    <div class="progress-label">Personal Information</div>
+    <div class="progress-item" title="Type of Visa"></div>
+    <div class="progress-label">Type of Visa</div>
+    <div class="progress-item" title="Work Information"></div>
+    <div class="progress-label">Work & Education</div>
+    <div class="progress-item" title="Family Information"></div>
+    <div class="progress-label">Family Information</div>
+    <div class="progress-item" title="BLANK"></div>
+    <div class="progress-label">Trip Itinerary</div>
+    <div class="progress-item" title="Past Travel"></div>
+    <div class="progress-label">Past Travel</div>
+    <div class="progress-item" title="Other Information"></div>
+    <div class="progress-label">Other Information</div>
+    <div class="progress-item" title="BLANK"></div>
+    <div class="progress-label">Submit</div>
+</div>
+
+
+<script>
+    function printApplicationID() {
+        var applicationID = document.getElementById("application-id").value;
+        alert("Application ID: " + applicationID);
+    }
+    function showPopUp() {
+        var popUp = document.getElementById("yesBox");
+        popUp.style.display = "block";
+    }
+
+
+</script>
+
+</body>
+</html>

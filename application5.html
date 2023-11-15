@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.rawgit.com/umpirsky/country-list/master/data/en/countries.json"></script>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #0f4688;
+    }
+
+    .questionnaire-box {
+        background-color: #fff;
+        border: 2px solid #333;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .sub-box {
+        background-color: #97caf3;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        flex-direction: row-reverse;
+    }
+
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #012f72;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .progress-bar {
+        background-color: #ddd;
+        height: 400px;
+        width: 80px;
+        position: fixed;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .progress-item {
+        width: 20px;
+        height: 20px;
+        background-color: #4caf50;
+        border-radius: 50%;
+        margin: 5px 0;
+    }
+
+    .progress-label {
+        font-size: 12px;
+        text-align: center;
+    }
+
+
+    .speed-option{
+        margin-right: 20px;
+        align-items: center;
+    }
+
+    input[type="radio"] {
+        margin-right: 5px;
+        width: 20px; /* Adjust the width of the radio button */
+        height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .choice-option {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+
+    #next-button {
+        float: right;
+        height: 30px;
+        width: 150px;
+        font-size: 24px;
+        margin-bottom: 30px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .sub-sub-box{
+        background-color: #edeef1;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        flex-direction: row-reverse;
+    }
+    .label{
+        margin-top:10px;
+        margin-bottom: 1px;
+        font-size: 16px;
+    }
+
+    #inviteBox{
+        display: none;
+        /* Add any additional styling for the pop-up */
+    }
+
+    .phone-input{
+        height: 30px;
+        width: 300px;
+    }
+    .country-code{
+        height: 25px;
+    }
+</style>
+<title>Chinese Visa Questionnaire</title>
+</head>
+<body>
+
+<img src="img/logo.jpg" height="100" width="500">
+
+<div class="questionnaire-box">
+    <label for="application-id">Application ID:</label>
+    <p>Please save your Application ID if you do not plan on completing your application in one-sitting.</p>
+    <input type="text" id="application-id" value="123-456-789" readonly>
+    <button onclick="printApplicationID()">Print ID</button>
+</div>
+
+<div class="questionnaire-box">
+<label>Trip Itinerary</label>
+    <div class="sub-box">
+        <label>Arrival in China</label>
+        <div class="sub-box">
+            <label>Date of Arrival</label>
+            <div class="sub-sub-box">
+                <label for="month">Month:</label>
+                <select id="month" style="height: 33px; width: 300px">
+                    <option></option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <label for="day">Day:</label>
+                <select id="day" style="height: 33px; width: 300px">
+                    <option></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+                <label>Year</label>
+                <input type="text">
+                </div>
+
+                <label>City of Arrival</label>
+                <input type="text">
+            </div>
+        </div>
+    <div class="sub-box">
+<label>Travel Within China</label>
+        <div class="sub-sub-box">
+            <label>Do you plan on travelling to different cities within China?</label>
+            <div class="choice-option">
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Yes</label>
+            </div>
+
+            <div class="choice-option">
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">No</label>
+        </div>
+            <label>If Yes, please answer the following:</label>
+            <div class="sub-sub-box">
+                <label>City</label>
+                <select class="select-block-level select2-hidden-accessible" id="StayCity1" name="StayCity1" index="1" tabindex="-1" aria-hidden="true" style="height:30px"><option></option><option value="ABA">Aba</option><option value="AKD">Aksu</option><option value="ALD">Altay</option><option value="ALM">Alxa Meng</option><option value="ANK">AnKang</option><option value="AQG">Anqing</option><option value="ASN">Anshan</option><option value="ASS">Anshun</option><option value="AYS">Anyang</option><option value="BCS">Baicheng</option><option value="469025">Baisha Lizu Zizhixian</option><option value="BSN">Baishan</option><option value="BYS">Baiyin</option><option value="BDS">Baoding</option><option value="BJI">Baoji</option><option value="BOS">Baoshan</option><option value="469029">Baoting Lizu Miaozu Zizhixian</option><option value="BTS">Baotou</option><option value="BYR">Bayannur</option><option value="BAG">Bayingolin Mongol</option><option value="BZS">Bazhong</option><option value="BHY">Beihai</option><option value="BJ">Beijing</option><option value="BBU">Bengbu</option><option value="BXS">Benxi</option><option value="BJD">Bijie</option><option value="BZH">Binzhou</option><option value="BOR">Bortala Mongol</option><option value="BSS">Bose</option><option value="BOZ">Bozhou</option><option value="CGZ">Cangzhou</option><option value="CGQ">Changchun</option><option value="CDE">Changde</option><option value="CJZ">Changji</option><option value="469026">Changjiang Lizu Zizhixian</option><option value="CSX">Changsha</option><option value="CZS">Changzhi</option><option value="CZX">Changzhou</option><option value="CYS">Chaoyang</option><option value="CZY">Chaozhou</option><option value="CDS">Chengde</option><option value="CTU">Chengdu</option><option value="469023">Chengmai Qu</option><option value="CNZ">Chenzhou</option><option value="CFS">Chifeng</option><option value="CIZ">Chizhou</option><option value="CQ">Chongqing</option><option value="COZ">Chongzuo</option><option value="CXD">Chuxiong</option><option value="CUZ">Chuzhou</option><option value="DHL">Da Hinggan Ling</option><option value="DLZ">Dali</option><option value="DLC">Dalian</option><option value="DDG">Dandong</option><option value="460400">Danzhou Shi</option><option value="DQG">Daqing</option><option value="DTG">Datong</option><option value="DAZ">Dazhou</option><option value="DHG">Dehong</option><option value="DEZ">Dêqên</option><option value="DEY">Deyang</option><option value="DZS">Dezhou</option><option value="469021">Dingan Xian</option><option value="DNX">Dingxi</option><option value="469007">Dongfang  Shi</option><option value="DGG">Dongguan</option><option value="DYG">Dongying</option><option value="ESHC">Enshi</option><option value="EZS">Ezhou</option><option value="FAN">Fangchenggang</option><option value="FOS">Foshan</option><option value="FSN">Fushun</option><option value="FXS">Fuxin</option><option value="FYS">Fuyang</option><option value="FOC">Fuzhou</option><option value="FUZ">Fuzhou</option><option value="GNZ">Gannan</option><option value="GZH">Ganzhou</option><option value="FCWI">Gaoxiong</option><option value="GAZ">Garzê</option><option value="GOL">Golog</option><option value="GAC">Guangan</option><option value="GYC">Guangyuan</option><option value="CAN1">Guangzhou</option><option value="GUG">Guigang</option><option value="KWL">Guilin</option><option value="KWE">Guiyang</option><option value="GYN">Guyuan</option><option value="HBZ">Haibei</option><option value="HDD">Haidong</option><option value="HAK">Haikou</option><option value="HNN">Hainan</option><option value="HXZ">Haixi</option><option value="HMDC">Hami</option><option value="HDS">Handan</option><option value="HGH">Hangzhou</option><option value="HZJ">Hanzhong</option><option value="HRB">Harbin</option><option value="HBS">Hebi</option><option value="HCS">Hechi</option><option value="HFE">Hefei</option><option value="HEG">Hegang</option><option value="HEK">Heihe</option><option value="HGS">Hengshui</option><option value="HNY">Hengyang</option><option value="HEY">Heyuan</option><option value="HZS">Heze</option><option value="HZO">Hezhou</option><option value="HET">Hohhot</option><option value="HHZ">Honghe</option><option value="FCWR">Hongkong Island</option><option value="HOD">Hotan</option><option value="HAS">Huai'an</option><option value="HBE">Huaibei</option><option value="HHS">Huaihua</option><option value="HNS">Huainan</option><option value="FCWQ">Hualian</option><option value="HGE">Huanggang</option><option value="HNZ">Huangnan</option><option value="HSN">Huangshan</option><option value="HSI">Huangshi</option><option value="HUI">Huizhou</option><option value="HLD">Huludao</option><option value="HBR">Hulun Buir</option><option value="HZH">Huzhou</option><option value="ILD">Ili Kazak</option><option value="JMU">Jiamusi</option><option value="JAS">Ji'an</option><option value="JMN">Jiangmen</option><option value="JZY">Jiaozuo</option><option value="JIX">Jiaxing</option><option value="FCWH">Jiayi</option><option value="JYG">Jiayuguan</option><option value="JIY">Jieyang</option><option value="JLS">Jilin</option><option value="FCWE">Jilong</option><option value="TNA">Jinan</option><option value="JCS">Jinchang</option><option value="JCG">Jincheng</option><option value="JDZ">Jingdezhen</option><option value="JMS">Jingmen</option><option value="JGZ">Jingzhou</option><option value="JHA">Jinhua</option><option value="JNG">Jining</option><option value="JZN">Jinzhong</option><option value="JNZ">Jinzhou</option><option value="JIU">Jiujiang</option><option value="FCWT">Jiulong</option><option value="JQG">Jiuquan</option><option value="JXI">Jixi</option><option value="KFS">Kaifeng</option><option value="KAR">Karamay</option><option value="KSI">Kashi</option><option value="KIZ">Kizilsu Kirgiz</option><option value="KMG">Kunming</option><option value="LIB">Laibin</option><option value="LWS">Laiwu</option><option value="LFS">Langfang</option><option value="LHW">Lanzhou</option><option value="469027">Ledong Lizu Zizhixian</option><option value="LES">Leshan</option><option value="LXA">Lhasa</option><option value="LSY">Liangshan</option><option value="LYG">Lianyungang</option><option value="LCH">Liaocheng</option><option value="LYL">Liaoyang</option><option value="LYH">Liaoyuan</option><option value="LJH">Lijiang</option><option value="LIH">Lincang</option><option value="LFN">Linfen</option><option value="469024">Lingao Xian</option><option value="469028">Lingshui Lizu Zizhixian</option><option value="LXH">Linxia</option><option value="LYI">Linyi</option><option value="540400">Linzhi Shi</option><option value="LSS">Lishui</option><option value="LPS">Liupanshui</option><option value="LZH">Liuzhou</option><option value="LGN">Longnan</option><option value="LYF">Longyan</option><option value="LDI">Loudi</option><option value="LAW">Lu'an</option><option value="LLH">Lüliang</option><option value="LHS">Luohe</option><option value="LYA">Luoyang</option><option value="LUZ">Luzhou</option><option value="MAA">Ma'anshan</option><option value="MO">Macao</option><option value="MMI">Maoming</option><option value="MSS">Meishan</option><option value="MXZ">Meizhou</option><option value="MYG">Mianyang</option><option value="FCWB">Miaosu</option><option value="MDGC">MudanJiang</option><option value="NAD">Nagqu</option><option value="KHN">Nanchang</option><option value="NCO">Nanchong</option><option value="NKG">Nanjing</option><option value="NNG">Nanning</option><option value="NPS">Nanping</option><option value="NSA">Nansha</option><option value="NTG">Nantong</option><option value="FCWM">Nantou</option><option value="NYS">Nanyang</option><option value="NJS">Neijiang</option><option value="NGD">Ngari</option><option value="NGB">Ningbo</option><option value="NDS">Ningde</option><option value="NUJ">Nujiang</option><option value="ODS">Ordos</option><option value="PJS">Panjin</option><option value="PZH">Panzhihua</option><option value="FCWD">Penghu</option><option value="PDS">Pingdingshan</option><option value="FCWO">Pingdong</option><option value="PLS">Pingliang</option><option value="PXS">Pingxiang</option><option value="PRS">Pu'er</option><option value="PUT">Putian</option><option value="PYS">Puyang</option><option value="QAD">Qamdo</option><option value="130283">Qian'an Shi</option><option value="QND">Qiandongnan</option><option value="QNJ">Qianjiang</option><option value="QNZ">Qiannan</option><option value="QXZ">Qianxinan</option><option value="TAO">Qingdao</option><option value="QYI">Qingyang</option><option value="QYN">Qingyuan</option><option value="SHP">Qinhuangdao</option><option value="QZH">Qinzhou</option><option value="469002">Qionghai   Shi</option><option value="469030">Qiongzhong Lizu Miaozu Zizhixian</option><option value="NDG">Qiqihar</option><option value="QTH">QitaiHe</option><option value="QZJ">Quanzhou</option><option value="QJS">Qujing</option><option value="QUZ">Quzhou</option><option value="RZH">Rizhao</option><option value="SMX">Sanmenxia</option><option value="SMS">Sanming</option><option value="SYX">Sanya</option><option value="SH">Shanghai</option><option value="SLH">Shangluo</option><option value="SQS">Shangqiu</option><option value="SRS">Shangrao</option><option value="SND">Shannan</option><option value="SWA">Shantou</option><option value="SWEC">Shanwei</option><option value="HSC">Shaoguan</option><option value="SXG">Shaoxing</option><option value="SYRC">Shaoyang</option><option value="SNJ">Shennongjia</option><option value="SHE">Shenyang</option><option value="SZX">Shenzhen</option><option value="SJW">Shijiazhuang</option><option value="SYE">Shiyan</option><option value="SZS">Shizuishan</option><option value="SYS">ShuangyaShan</option><option value="SZJ">Shuozhou</option><option value="SPS">Siping</option><option value="SYU">Songyuan</option><option value="SUH">Suihua</option><option value="SNS">Suining</option><option value="SZR">Suizhou</option><option value="SUQ">Suqian</option><option value="SUZ">Suzhou</option><option value="SZH">Suzhou</option><option value="TCDC">Tacheng</option><option value="TAI">Tai'an</option><option value="FCWA">Taibei</option><option value="FCWP">Taidong</option><option value="FCWC">Tainan</option><option value="TYN">Taiyuan</option><option value="FCWG">Taizhong</option><option value="TZZ">Taizhou</option><option value="TZS">Taizhou</option><option value="TGS">Tangshan</option><option value="FCWK">Taoyuan</option><option value="TJ">Tianjin</option><option value="TMS">Tianmen</option><option value="TSU">Tianshui</option><option value="TLSC">Tieling</option><option value="TCN">Tongchuan</option><option value="THS">Tonghua</option><option value="TLO">Tongliao</option><option value="TOL">Tongling</option><option value="TRD">Tongren</option><option value="469022">Tunchang Xian</option><option value="TUD">Turpan</option><option value="ULS">Ulanqab</option><option value="URC">ürümqi</option><option value="469006">Wanning Qu</option><option value="WEF">Weifang</option><option value="WEH">Weihai</option><option value="WNA">Weinan</option><option value="469005">Wenchang Qu</option><option value="WSZ">Wenshan</option><option value="WNZ">Wenzhou</option><option value="WHM">Wuhai</option><option value="WUH">Wuhan</option><option value="WHI">Wuhu</option><option value="WWS">Wuwei</option><option value="WUX">Wuxi</option><option value="469001">Wuzhishan   Shi</option><option value="WZS">Wuzhong</option><option value="WUZ">Wuzhou</option><option value="XMN">Xiamen</option><option value="SIA">Xi'an</option><option value="XFN">Xiangfan</option><option value="XGT">Xiangtan</option><option value="XXZ">Xiangxi</option><option value="XNS">Xianning</option><option value="XNT">Xiantao</option><option value="XYS">Xianyang</option><option value="XGE">Xiaogan</option><option value="XID">Xigazê </option><option value="XGO">Xilin Gol Meng</option><option value="HIN">Xingan Meng</option><option value="XTS">Xingtai</option><option value="XNN">Xining</option><option value="FCWS">Xinjie</option><option value="XXS">Xinxiang</option><option value="XYG">Xinyang</option><option value="XYU">Xinyu</option><option value="XZS">Xinzhou</option><option value="FCWF">Xinzhu</option><option value="XSB">Xishuangbanna</option><option value="XCI">Xuancheng</option><option value="XCS">Xuchang</option><option value="XUZ">Xuzhou</option><option value="YAS">Ya'an</option><option value="YNA">Yan'an</option><option value="YBZ">Yanbian</option><option value="YCK">Yancheng</option><option value="YJI">Yangjiang</option><option value="YQS">Yangquan</option><option value="YZH">Yangzhou</option><option value="YNT">Yantai</option><option value="YBS">Yibin</option><option value="YCO">Yichang</option><option value="YCH">Yichun</option><option value="YCN">Yichun</option><option value="FCWJ">Yilan</option><option value="INC">Yinchuan</option><option value="YIK">Yingkou</option><option value="YTS">Yingtan</option><option value="YYS">Yiyang</option><option value="YZS">Yongzhou</option><option value="YYG">Yueyang</option><option value="YLN">Yulin</option><option value="YUL">Yulin</option><option value="YCE">Yuncheng</option><option value="YFS">Yunfu</option><option value="FCWN">Yunlin</option><option value="YSZ">Yushu</option><option value="YXS">Yuxi</option><option value="ZZG">Zaozhuang</option><option value="FCWL">Zhanghua</option><option value="ZJJ">Zhangjiajie</option><option value="ZJK">Zhangjiakou</option><option value="ZYE">Zhangye</option><option value="ZZU">Zhangzhou</option><option value="ZHA">Zhanjiang</option><option value="ZQG">Zhaoqing</option><option value="ZTS">Zhaotong</option><option value="CGO">Zhengzhou</option><option value="ZHE">Zhenjiang</option><option value="ZSN">Zhongshan</option><option value="ZWS">Zhongwei</option><option value="ZKS">Zhoukou</option><option value="ZOS">Zhoushan</option><option value="ZUH">Zhuhai</option><option value="ZMD">Zhumadian</option><option value="ZZS">Zhuzhou</option><option value="ZBO">Zibo</option><option value="ZGS">Zigong</option><option value="ZYS">Ziyang</option><option value="ZNY">Zunyi</option></select>
+                    <label class="label">Date of Arrival to City</label>
+                    <label for="month">Month:</label>
+                    <select id="month1" style="height: 33px; width: 300px">
+                        <option></option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <label for="day">Day:</label>
+                    <select id="day1" style="height: 33px; width: 300px">
+                        <option></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    <label>Year</label>
+                    <input type="text">
+                <button style="margin-top: 10px;" class="plus-button" onclick="addPhoneNumber()">+</button>
+                </div>
+            </div>
+            </div>
+    <div class="sub-box">
+        <label>Departure from China</label>
+        <div class="sub-box">
+            <label>Date of Departure</label>
+            <div class="sub-sub-box">
+                <label for="month">Month:</label>
+                <select id="month2" style="height: 33px; width: 300px">
+                    <option></option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <label for="day">Day:</label>
+                <select id="day2" style="height: 33px; width: 300px">
+                    <option></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+                <label>Year</label>
+                <input type="text">
+            </div>
+
+            <label>City of Departure</label>
+            <input type="text">
+        </div>
+    </div>
+        </div>
+    </div>
+    </div>
+<div class="questionnaire-box">
+    <label>Inviting Person or Organization</label>
+    <div class="sub-box">
+        <label>Have you been invited to China by a person or organization?</label>
+        <div class="choice-option">
+            <input type="radio" name="invitation" value="yes" onclick="showPopUp()">
+            <label for="male">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio"  name="gender" value="female">
+            <label for="female">No</label>
+            </div>
+    </div>
+    <label id="inviteBox">NOT YET IMPLEMENTED</label>
+
+    </div>
+</div>
+
+<div class="questionnaire-box">
+    <label>Emergency Contact</label>
+    <div class="sub-box">
+        <label class="label">First Name</label>
+        <input type="text">
+        <label class="label">Last Name</label>
+        <input type="text">
+        <label class="label">Relationship to You</label>
+        <input type="text">
+        <label class="label">Phone Number</label>
+            <select class="country-code" id="country-code1">
+                <option>+ Country Code</option>
+                <option value="+1">+1 United States</option>
+                <option value="+93">+93 Afghanistan</option>
+                <option value="33">+33 France</option>
+                <option value="+39">+39 Italy</option>
+                <option value="+254">+254 Kenya</option>
+                <option value="+856">+856 Laos</option>
+            </select>
+            <input type="tel" class="phone-input" id="phone-number1" placeholder="123-123-1234">
+    </div>
+</div>
+<div class="questionnaire-box">
+    <label>Who is paying for this travel?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes" name="gender" value="male">
+            <label for="yes">Self</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no" name="gender" value="female">
+            <label for="no">Other</label>
+        </div>
+        <div class="choice-option">
+            <input type="radio" id="org" name="gender" value="female">
+            <label for="no">Organization</label>
+        </div>
+    </div>
+</div>
+
+
+<a href="application6.html" id="next-button">Next</a>
+
+<div class="progress-bar">
+    <div class="progress-item" title="Home Page"></div>
+    <div class="progress-label">Home Page</div>
+    <div class="progress-item" title="Personal Information"></div>
+    <div class="progress-label">Personal Information</div>
+    <div class="progress-item" title="Type of Visa"></div>
+    <div class="progress-label">Type of Visa</div>
+    <div class="progress-item" title="Work Information"></div>
+    <div class="progress-label">Work & Education</div>
+    <div class="progress-item" title="Family Information"></div>
+    <div class="progress-label">Family Information</div>
+    <div class="progress-item" title="BLANK"></div>
+    <div class="progress-label">Trip Itinerary</div>
+    <div class="progress-item" title="Past Travel"></div>
+    <div class="progress-label">Past Travel</div>
+    <div class="progress-item" title="Other Information"></div>
+    <div class="progress-label">Other Information</div>
+    <div class="progress-item" title="BLANK"></div>
+    <div class="progress-label">Submit</div>
+</div>
+
+
+<script>
+    function printApplicationID() {
+        var applicationID = document.getElementById("application-id").value;
+        alert("Application ID: " + applicationID);
+    }
+    function showPopUp() {
+        var popUp = document.getElementById("inviteBox");
+        popUp.style.display = "block";
+    }
+
+
+
+</script>
+
+</body>
+</html>

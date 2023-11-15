@@ -126,14 +126,24 @@
         margin-bottom: 10px;
         flex-direction: row-reverse;
     }
-    .country-code{
-        height: 25px;
+    .label{
+        margin-top:10px;
+        margin-bottom: 1px;
+        font-size: 16px;
     }
+
+    #inviteBox{
+        display: none;
+        /* Add any additional styling for the pop-up */
+    }
+
     .phone-input{
         height: 30px;
         width: 300px;
     }
-
+    .country-code{
+        height: 25px;
+    }
 </style>
 <title>Chinese Visa Questionnaire</title>
 </head>
@@ -149,27 +159,8 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Occupation Area</label>
+    <label>Have you ever visited China?</label>
     <div class="sub-box">
-        <select style="height: 33px; width: 300px">
-            <option></option>
-            <option>Computer and Mathematical</option>
-            <option>Business and Financial</option>
-            <option>Community and Social</option>
-            <option>Arts, Design, Entertainment, or Media</option>
-            <option>Education</option>
-            <option>Management</option>
-            <option>Life, Physical, and Social Science</option>
-            <option>Student</option>
-            <option>Other</option>
-        </select>
-    </div>
-</div>
-
-<div class="questionnaire-box">
-    <label>Most Recent Work Experience</label>
-    <div class="sub-box">
-        <label>Are you currently employed?</label>
         <div class="choice-option">
             <input type="radio" id="yes" name="gender" value="male">
             <label for="yes">Yes</label>
@@ -180,106 +171,55 @@
             <label for="no">No</label>
         </div>
     </div>
-    <div class="sub-box">
-        <label>If you answered "Yes" above:</label>
-        <div class="sub-sub-box">
-            <label>Position/Role: </label>
-            <input type="text">
-            </div>
-        <div class="sub-sub-box">
-            <label>Employment Date Start: </label>
-            <label for="month">Month:</label>
-            <select id="month" style="height: 33px; width: 300px">
-                <option></option>
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-            </select>
-
-                <label style="margin-top: 10px">Year</label>
-                <input type="text" style="width: 300px;" >
-            </div>
-
-        <div class="sub-sub-box">
-            <label>Company Address: </label>
-            <div class="sub-sub-box">
-                <label>Street Address</label>
-                <input type="text">
-                <label>City</label>
-                <input type="text">
-                <label>State</label>
-                <input type="text">
-                <label>ZipCode</label>
-                <input type="text">
-            </div>
-        </div>
-
-        <div class="sub-sub-box">
-            <label>Company Phone Number</label>
-            <select class="country-code" id="country-code">
-                <option>+ Country Code</option>
-                <option value="+1">+1 United States</option>
-                <option value="+93">+93 Afghanistan</option>
-                <option value="33">+33 France</option>
-                <option value="+39">+39 Italy</option>
-                <option value="+254">+254 Kenya</option>
-                <option value="+856">+856 Laos</option>
-            </select>
-            <input type="tel" class="phone-input" id="phone-number" placeholder="123-123-1234">
-        </div>
-
-        <div class="sub-sub-box">
-        <label>Name of Supervisor: </label>
-        <input type="text" style="width: 300px">
-        </div>
-
-        <div class="sub-sub-box">
-            <label>Supervisor's Phone Number</label>
-            <select class="country-code" id="country-code1">
-                <option>+ Country Code</option>
-                <option value="+1">+1 United States</option>
-                <option value="+93">+93 Afghanistan</option>
-                <option value="33">+33 France</option>
-                <option value="+39">+39 Italy</option>
-                <option value="+254">+254 Kenya</option>
-                <option value="+856">+856 Laos</option>
-            </select>
-            <input type="tel" class="phone-input" id="phone-number1" placeholder="123-123-1234">
-        </div>
-    </div>
 </div>
+
 <div class="questionnaire-box">
-    <label>Highest Level of Education</label>
+    <label>Have you ever been issues a Chinese Visa?</label>
     <div class="sub-box">
-        <label>Name of School</label>
-        <input type="text">
-        <label>Degree</label>
-        <select class="degree">
-            <option></option>
-            <option>High School Diploma</option>
-            <option>Bachelor's</option>
-            <option>Master's</option>
-            <option>PhD</option>
-        </select>
-        <label>Major</label>
-        <input type="text">
+        <div class="choice-option">
+            <input type="radio" id="yes1" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no1" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
     </div>
 </div>
+
+<div class="questionnaire-box">
+    <label>Do you currently hold any valid visas issued by other countries?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes2" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no2" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
 </div>
+
+<div class="questionnaire-box">
+    <label>Have you visited other countries in the past 12 months?</label>
+    <div class="sub-box">
+        <div class="choice-option">
+            <input type="radio" id="yes3" name="gender" value="male">
+            <label for="yes">Yes</label>
+        </div>
+
+        <div class="choice-option">
+            <input type="radio" id="no3" name="gender" value="female">
+            <label for="no">No</label>
+        </div>
+    </div>
 </div>
 
 
-
-<a href="application4.html" id="next-button">Next</a>
+<a href="application7.html" id="next-button">Next</a>
 
 <div class="progress-bar">
     <div class="progress-item" title="Home Page"></div>
@@ -308,19 +248,6 @@
         var applicationID = document.getElementById("application-id").value;
         alert("Application ID: " + applicationID);
     }
-
-    $(document).ready(function() {
-        // Fetch the list of countries
-        var countries = Object.keys(countriesList);
-
-        // Populate the dropdown with countries
-        var dropdown = $("#country");
-        countries.forEach(function(country) {
-            var option = $("<option>").val(country).text(countriesList[country]);
-            dropdown.append(option);
-        });
-    });
-
 
 </script>
 
