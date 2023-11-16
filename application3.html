@@ -102,6 +102,11 @@
         text-align: center;
     }
 
+    .required-label {
+        color: red;
+        font-weight: bold;
+    }
+
 
     .speed-option{
         margin-right: 20px;
@@ -190,8 +195,12 @@
     <button onclick="printApplicationID()">Print ID</button>
 </div>
 
+<div>
+    <label class="required-label">* Required</label>
+</div>
+
 <div class="questionnaire-box">
-    <label>Occupation Area</label>
+    <label class="required-label">*</label><label>Occupation Area</label>
     <div class="sub-box">
         <select style="height: 33px; width: 300px">
             <option></option>
@@ -209,7 +218,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Most Recent Work Experience</label>
+    <label class="required-label">*</label><label>Most Recent Work Experience</label>
     <div class="sub-box">
         <label>Are you currently employed?</label>
         <div class="choice-option">
@@ -300,7 +309,7 @@
     </div>
 </div>
 <div class="questionnaire-box">
-    <label>Highest Level of Education</label>
+    <label class="required-label">*</label><label>Highest Level of Education</label>
     <div class="sub-box">
         <label>Name of School</label>
         <input type="text">

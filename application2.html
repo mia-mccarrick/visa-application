@@ -53,6 +53,11 @@
         cursor: pointer;
     }
 
+    .required-label {
+        color: red;
+        font-weight: bold;
+    }
+
     button:hover {
         background-color: #45a049;
     }
@@ -178,8 +183,12 @@
     <button onclick="printApplicationID()">Print ID</button>
 </div>
 
+<div>
+    <label class="required-label">* Required</label>
+</div>
+
 <div class="questionnaire-box">
-    <label>Type of Visa</label>
+    <label class="required-label">*</label><label>Type of Visa</label>
     <div class="sub-box">
         <select style="height: 33px; width: 300px">
         <option></option>
@@ -192,7 +201,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Service Speed </label>
+    <label class="required-label">*</label><label>Service Speed </label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="male" name="gender" value="male">
@@ -208,7 +217,7 @@
 
 
 <div class="questionnaire-box">
-    <label>Application Details </label>
+    <label class="required-label">*</label><label>Application Details </label>
     <div class="sub-box">
         <label>Number of Entries to China</label>
         <div class="sub-sub-box">

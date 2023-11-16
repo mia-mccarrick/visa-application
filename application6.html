@@ -37,6 +37,11 @@
         margin-bottom: 10px;
     }
 
+    .required-label {
+        color: red;
+        font-weight: bold;
+    }
+
     input[type="text"] {
         width: 100%;
         padding: 8px;
@@ -196,7 +201,12 @@
     <button onclick="printApplicationID()">Print ID</button>
 </div>
 
+<div>
+    <label class="required-label">* Required</label>
+</div>
+
 <div class="questionnaire-box">
+    <label class="required-label">*</label>
     <label>Have you ever visited China?</label>
     <div class="sub-box">
         <div class="choice-option">
@@ -212,6 +222,7 @@
 </div>
 
 <div class="questionnaire-box">
+    <label class="required-label">*</label>
     <label>Have you ever been issues a Chinese Visa?</label>
     <div class="sub-box">
         <div class="choice-option">
@@ -227,6 +238,7 @@
 </div>
 
 <div class="questionnaire-box">
+    <label class="required-label">*</label>
     <label>Do you currently hold any valid visas issued by other countries?</label>
     <div class="sub-box">
         <div class="choice-option">
@@ -242,6 +254,7 @@
 </div>
 
 <div class="questionnaire-box">
+    <label class="required-label">*</label>
     <label>Have you visited other countries in the past 12 months?</label>
     <div class="sub-box">
         <div class="choice-option">

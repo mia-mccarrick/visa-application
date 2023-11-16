@@ -22,6 +22,11 @@
         margin-bottom: 20px;
     }
 
+    .required-label {
+        color: red;
+        font-weight: bold;
+    }
+
     .sub-box {
         background-color: #97caf3;
         border: 1px solid #ddd;
@@ -196,12 +201,19 @@
     <button onclick="printApplicationID()">Print ID</button>
 </div>
 
+<div>
+    <label class="required-label">* Required</label>
+</div>
+
 <div class="questionnaire-box">
 <h2>Trip Itinerary</h2>
+
     <div class="sub-box">
-        <label>Arrival in China</label>
+        <label class="required-label">*</label><label>Arrival in China</label>
+        
         <div class="sub-box">
-            <label>Date of Arrival</label>
+  <label>Date of Arrival</label>
+            
             <div class="sub-sub-box">
                 <label for="month">Month:</label>
                 <select id="month" style="height: 33px; width: 300px">
@@ -258,12 +270,12 @@
                 <input type="text">
                 </div>
 
-                <label>City of Arrival</label>
+            <label>City of Arrival</label>
                 <input type="text">
             </div>
         </div>
     <div class="sub-box">
-<label>Travel Within China</label>
+        <label class="required-label">*</label><label>Travel Within China</label>
         <div class="sub-sub-box">
             <label>Do you plan on travelling to different cities within China?</label>
             <div class="choice-option">
@@ -338,7 +350,7 @@
             </div>
             </div>
     <div class="sub-box">
-        <label>Departure from China</label>
+        <label class="required-label">*</label><label>Departure from China</label>
         <div class="sub-box">
             <label>Date of Departure</label>
             <div class="sub-sub-box">
@@ -405,7 +417,7 @@
     </div>
     </div>
 <div class="questionnaire-box">
-    <label>Inviting Person or Organization</label>
+    <label class="required-label">*</label><label>Inviting Person or Organization</label>
     <div class="sub-box">
         <label>Have you been invited to China by a person or organization?</label>
         <div class="choice-option">
@@ -424,7 +436,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Emergency Contact</label>
+    <label class="required-label">*</label><label>Emergency Contact</label>
     <div class="sub-box">
         <label class="label">First Name</label>
         <input type="text">
@@ -446,7 +458,7 @@
     </div>
 </div>
 <div class="questionnaire-box">
-    <label>Who is paying for this travel?</label>
+    <label class="required-label">*</label><label>Who is paying for this travel?</label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="yes" name="gender" value="male">

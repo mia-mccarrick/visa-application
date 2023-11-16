@@ -108,6 +108,11 @@
         align-items: center;
     }
 
+    .required-label {
+        color: red;
+        font-weight: bold;
+    }
+
     input[type="radio"] {
         margin-right: 5px;
         width: 20px; /* Adjust the width of the radio button */
@@ -174,8 +179,12 @@
     <button onclick="printApplicationID()">Print ID</button>
 </div>
 
+<div>
+    <label class="required-label">* Required</label>
+</div>
+
 <div class="questionnaire-box">
-    <label>Have you ever been refused a Chinese visa or entry into China?</label>
+    <label class="required-label">*</label><label>Have you ever been refused a Chinese visa or entry into China?</label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="yes" name="gender" value="male">
@@ -190,7 +199,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Have you ever had a Chinese visa that was cancelled?</label>
+    <label class="required-label">*</label><label>Have you ever had a Chinese visa that was cancelled?</label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="yes1" name="gender" value="male">
@@ -205,7 +214,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Do you ever entered China illegally, overstayed, or worked illegally?</label>
+    <label class="required-label">*</label><label>Do you ever entered China illegally, overstayed, or worked illegally?</label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="yes2" name="gender" value="male">
@@ -220,7 +229,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Do you have a criminal record in any country?</label>
+    <label class="required-label">*</label><label>Do you have a criminal record in any country?</label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="yes3" name="gender" value="male">
@@ -235,7 +244,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Do you have any serious mental disorders or infectious diseases?</label>
+    <label class="required-label">*</label><label>Do you have any serious mental disorders or infectious diseases?</label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="yes4" name="gender" value="male">
@@ -250,7 +259,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>In the past 30 days, have you ever visted a region with an epidemic?</label>
+    <label class="required-label">*</label><label>In the past 30 days, have you ever visted a region with an epidemic?</label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="yes5" name="gender" value="male">
@@ -266,7 +275,7 @@
 
 
 <div class="questionnaire-box">
-    <label>Have you ever been trained in the field of firearms, explosives, nuclear devices, or biological or chemical products?</label>
+    <label class="required-label">*</label><label>Have you ever been trained in the field of firearms, explosives, nuclear devices, or biological or chemical products?</label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="yes6" name="gender" value="male">
@@ -281,7 +290,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Are you or have you ever served in the military?</label>
+    <label class="required-label">*</label><label>Are you or have you ever served in the military?</label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="yes7" name="gender" value="male">
@@ -296,7 +305,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Have you served or participated in any paramilitary organization, civil armed forces, or guerrilla forces??</label>
+    <label class="required-label">*</label><label>Have you served or participated in any paramilitary organization, civil armed forces, or guerrilla forces??</label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="yes8" name="gender" value="male">
@@ -311,7 +320,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Do you work for any social or charitable organization?</label>
+    <label class="required-label">*</label><label>Do you work for any social or charitable organization?</label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="yes9" name="gender" value="male">
@@ -326,7 +335,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Did anyone else assist you in completint this application?</label>
+    <label class="required-label">*</label><label>Did anyone else assist you in completint this application?</label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="yes11" name="gender" value="male">
@@ -341,7 +350,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Is there anything else you want to declare?</label>
+    <label class="required-label">*</label><label>Is there anything else you want to declare?</label>
     <div class="sub-box">
         <div class="choice-option">
             <input type="radio" id="yes10" name="gender" value="male" onclick="showPopUp()">

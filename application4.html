@@ -22,6 +22,11 @@
         margin-bottom: 20px;
     }
 
+    .required-label {
+        color: red;
+        font-weight: bold;
+    }
+
     .sub-box {
         background-color: #97caf3;
         border: 1px solid #ddd;
@@ -196,8 +201,12 @@
     <button onclick="printApplicationID()">Print ID</button>
 </div>
 
+<div>
+    <label class="required-label">* Required</label>
+</div>
+
 <div class="questionnaire-box">
-    <h2>Current Residency</h2>
+    <label class="required-label">*</label><h2>Current Residency</h2>
     <div class="sub-box">
             <label>Primary Address: </label>
             <div class="sub-sub-box">
@@ -242,7 +251,7 @@
         <input type="email" class="email" placeholder="abcdef@gmail.com">
     </div>
     <div class="questionnaire-box">
-        <h2>Family</h2>
+        <label class="required-label">*</label><h2>Family</h2>
         <div class="sub-box">
             <label>Mother</Label>
             <div class="sub-sub-box">
@@ -390,7 +399,7 @@
         </div>
     </div>
     <div class="questionnaire-box">
-        <label>Do you have any immediate relatives (excluding parents) living in China?</label>
+        <label class="required-label">*</label><label>Do you have any immediate relatives (excluding parents) living in China?</label>
         <div class="sub-box">
             <div class="choice-option">
                 <input type="radio" id="male" name="gender" value="male">

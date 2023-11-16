@@ -178,6 +178,11 @@
             margin-bottom: 10px;
         }
 
+        .required-label {
+            color: red;
+            font-weight: bold;
+        }
+
         .marital-option {
             margin-right: 20px; /* Adjust the spacing between the radio button and label */
             display: flex;
@@ -270,8 +275,12 @@
     <button onclick="printApplicationID()">Print ID</button>
 </div>
 
+<div>
+    <label class="required-label">* Required</label>
+</div>
+
 <div class="questionnaire-box">
-    <label>Where do you plan to apply for Chinese visa?</label>
+    <label class="required-label">*</label><label>Where do you plan to apply for Chinese visa?</label>
     <div class="sub-box">
         <label for="country">Country or Region:</label>
         <input type="text" id="country" value="United States of America" readonly>
@@ -283,7 +292,7 @@
 </div>
 
 <div class="upload-photo-box">
-    <h2>UPLOAD PHOTO</h2>
+    <label class="required-label">*</label><h2>UPLOAD PHOTO</h2>
     <label for="photo">Choose a photo:</label>
     <input type="file" id="photo" name="photo" accept="image/*">
     <button onclick="uploadPhoto()">Check Photo</button>
@@ -305,7 +314,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <h2>Personal Information</h2>
+    <label class="required-label">*</label><h2>Personal Information</h2>
         <div class="sub-box name-input-box">
             <div class="name">
                 <label>First Name</label>
@@ -323,7 +332,7 @@
     </div>
 
     <div class="questionnaire-box">
-        <label>Date of Birth:</label>
+        <label class="required-label">*</label><label>Date of Birth:</label>
         <div class="sub-box">
             <label for="month">Month:</label>
             <select id="month" style="height: 33px; width: 300px">
@@ -386,7 +395,7 @@
     </div>
     <div class="questionnaire-box">
         <div class="sub-box">
-            <label>Sex: </label>
+            <label class="required-label">*</label><label>Sex: </label>
             <div class="sex-option">
                 <input type="radio" id="male" name="gender" value="male">
                 <label for="male">Male</label>
@@ -400,7 +409,7 @@
     </div>
 
     <div class="questionnaire-box">
-        <label>Place of Birth</label>
+        <label class="required-label">*</label><label>Place of Birth</label>
         <div class="sub-box">
             <label for="country">Select a country:</label>
             <select class="select-block-level select2-hidden-accessible" id="BirthPlaceCountry" name="BirthPlaceCountry" tabindex="-1" aria-hidden="true" style="height: 33px;">
@@ -471,7 +480,7 @@
 
     <div class="questionnaire-box-box">
         <div class="sub-box">
-            <label>Marital Status </label>
+            <label class="required-label">*</label><label>Marital Status </label>
             <label for="married" class="marital-option">
                 <input type="radio" id="married" name="marital-status">
                 Married
@@ -499,7 +508,7 @@
         </div>
     </div>
     <div class="questionnaire-box-box">
-        <label>Permanent Residence</label>
+        <label class="required-label">*</label><label>Permanent Residence</label>
         <div class="sub-box">
             <div class="sub-box">
                 <label>Do you hold any nationality other than your birthplace?</label>
@@ -523,7 +532,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <h2>Passport Information</h2>
+    <label class="required-label">*</label><h2>Passport Information</h2>
     <div class="sub-box">
         <div class="item">
             <div class="form-group">
