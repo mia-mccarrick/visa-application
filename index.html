@@ -302,15 +302,23 @@
                             }
                         }
                         function calculateTotal() {
-                            let sum = originalTotal;
-                            selects.forEach((select) => {
-                                const selectedValue = parseInt(select.value);
-                                if (!isNaN(selectedValue)) {
-                                    sum += selectedValue;
-                                }
-                            });
-                            totalInput.value = sum;
-                            updateTotalDisplay();
+                            const allFieldsFilled = Array.from(selects).every(select => select.value !== "Default");
+
+                            if (allFieldsFilled) {
+                                let sum = originalTotal;
+                                selects.forEach((select) => {
+                                    const selectedValue = parseInt(select.value);
+                                    if (!isNaN(selectedValue)) {
+                                        sum += selectedValue;
+                                    }
+                                });
+                                totalInput.value = sum;
+                                updateTotalDisplay();
+                            }
+                        else{totalInput.value = "";
+                            document.getElementById("currencySymbol").innerText = "";
+                        }
+
                         }
 
                         function convertAndUpdateToUSD() {
