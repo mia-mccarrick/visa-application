@@ -105,18 +105,40 @@
         margin-right: 20px;
     }
 
-    #next-button {
+    #navigation-buttons {
+        margin-bottom: 30px;
         float: right;
+    }
+
+    #back-button,
+    #next-button {
+        float: left;
         height: 30px;
         width: 150px;
         font-size: 24px;
-        margin-bottom: 30px;
         padding: 10px 20px;
-        background-color: #4caf50;
-        color: #fff;
-        text-decoration: none;
         border-radius: 5px;
         cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+    }
+
+    #back-button {
+        background-color: #8f86d0; /* Red color, you can change it */
+        margin-right: 10px;
+    }
+
+    #next-button {
+        background-color: #4caf50; /* Green color, you can change it */
+    }
+
+    #back-button:hover {
+        background-color: #55466b; /* Darker red color on hover, you can change it */
+    }
+
+    #next-button:hover {
+        background-color: #45a049; /* Darker green color on hover, you can change it */
     }
     .sub-sub-box{
         background-color: #edeef1;
@@ -426,8 +448,10 @@
     </div>
 </div>
 
-
-<a href="application6.html" id="next-button">Next</a>
+<div id="navigation-buttons">
+    <a href="application4.html" id="back-button" onclick="updateProgressBar(-1)">Back</a>
+    <a href="application6.html" id="next-button" onclick="updateProgressBar(2)">Next</a>
+</div>
 
 <div class="progress-bar">
     <div class="progress-item" title="Home Page"></div>

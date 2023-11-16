@@ -150,6 +150,7 @@
         cursor: pointer;
     }
 
+
     .valid-text {
         color: green;
         margin-top: 10px;
@@ -188,6 +189,9 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        #next-button:hover {
+            background-color: #3d8a40; /* Darker green color on hover, you can change it */
+        }
 
         #zoom-in, #zoom-out, #rotate-button{
             font-size: 14px;
@@ -196,9 +200,53 @@
         }
 
         #submit{
-            background-color: #168347;
+            background-color: #157a15;
         }
 
+        #submit:hover{
+           background-color: #136b13;
+        }
+
+        #submitMessage {
+            display: none;
+            color: green; /* Change the color as needed */
+        }
+
+        #passportInfo {
+            cursor: pointer;
+            color: #124a96;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            text-decoration: underline;
+        }
+
+        #passportModal {
+            display: none;
+            position: fixed;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 2;
+        }
+        .name-input-box {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            text-align: center;
+            justify-content: space-between;
+        }
+
+        .name{
+            flex: 1;
+            display: flex;
+            flex-direction:column;
+            align-items: flex-start;
+            padding: 10px;
+        }
 
     </style>
     <title>Chinese Visa Questionnaire</title>
@@ -244,22 +292,26 @@
         </div>
         <p class="valid-text" id="valid-text"></p>
         <button id="submit">SUBMIT</button>
+        <p id="submitMessage">Submitted!</p>
     </div>
 </div>
 
 <div class="questionnaire-box">
     <h2>Personal Information</h2>
-    <div class="sub-box">
-        <label>First Name</label>
-        <input type="text">
-    </div>
-    <div class="sub-box">
-        <label>Last Name</label>
-        <input type="text">
-    </div>
-    <div class="sub-box">
-        <label>Chinese Name (if applicable)</label>
-        <input type="text">
+        <div class="sub-box name-input-box">
+            <div class="name">
+                <label>First Name</label>
+                <input type="text">
+                </div>
+            <div class="name">
+            <label>Last Name</label>
+            <input type="text">
+                </div>
+        </div>
+        <div class="sub-box">
+            <label>Chinese Name (if applicable)</label>
+            <input type="text">
+        </div>
     </div>
 
     <div class="questionnaire-box">
@@ -469,6 +521,14 @@
             <div class="form-group">
                 <div class="sub-box">
                     <label class="term_title"><span class="icon-bitianxiang"></span>Type of passport</label>
+                    <span id="passportInfo">What type of passport do I have?</span>
+                    <div id="passportModal">
+                        <p>If you are a civilian or <b>tourist</b>, select <b>Ordinary</b>.</p>
+                        <p>If you are in the <b>military</b>, select <b>Service</b>.</p>
+                        <p>If you are a <b>diplomat</b>, select <b>Diplomatic</b>.</p>
+                        <p>If you are an elected <b>government official</b>, select <b>Official</b>.</p>
+                        <button onclick="closePassportModal()">Close</button>
+                        </div>
                     <label class="radio term_title"><input type="radio" name="typeOfPassport" value="707003" id="typeOfPassport0">Diplomatic</label><label class="radio-inline term_title"><input type="radio" name="typeOfPassport" value="707002" id="typeOfPassport1">Service</label><label class="radio-inline term_title"><input type="radio" name="typeOfPassport" value="707004" id="typeOfPassport2">Official</label><label class="radio-inline term_title"><input type="radio" name="typeOfPassport" value="707005" id="typeOfPassport3">Special</label><label class="radio-inline term_title"><input type="radio" name="typeOfPassport" value="707001" id="typeOfPassport4">Ordinary</label><label class="radio-inline term_title"><input type="radio" name="typeOfPassport" value="707006" id="typeOfPassport5">Other</label>
                 </div>
                     </div>
@@ -643,6 +703,24 @@
         var applicationID = document.getElementById("application-id").value;
         alert("Application ID: " + applicationID);
     }
+
+    $(document).ready(function() {
+        $("#passportInfo").click(function() {
+            $("#passportModal").show();
+        });
+    });
+
+    // JavaScript to close the modal
+    function closePassportModal() {
+        $("#passportModal").hide();
+    }
+
+    $(document).ready(function() {
+        $("#submit").click(function() {
+            $(this).toggleClass("clicked");
+            $("#submitMessage").show().delay(2000).fadeOut(); // Show the message for 2 seconds
+        });
+    });
 
 </script>
 

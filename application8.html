@@ -14,7 +14,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
         .container {
@@ -63,13 +63,29 @@
         .submit-button:hover {
             background-color: #27ae60;
         }
+        .large-box {
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            height: 1200px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
+
 <img src="img/logo.jpg" height="100" width="640">
 <div class="container">
     <h1>You have reached the end of the COVA application!</h1>
     <p>Please review your application here:</p>
+
+    <div class="large-box">
+        <h2>This is an unimplemented feature</h2>
+        <p>Eventually, you will be able to review your entire application on this page.</p>
+        <p>For now, please keep scrolling as you are ready to submit your application.</p>
+    </div>
+
     <div class="button-container">
         <a href="not-implemented.html" class="review-button">Review Application</a>
         <button class="submit-button">Submit</button>
