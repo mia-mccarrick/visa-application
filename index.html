@@ -9,8 +9,9 @@
             padding: 0;
             overflow: hidden;
             height:100px;
-            background-color: #16388E; /* Change this to the desired blue color */
+            background-color: #16388E;
         }
+
 
         li {
             float: left;
@@ -29,13 +30,7 @@
         li a:hover {
             background-color: #2980b9; /* Change this to the desired hover color */
         }
-        .process_box {
-            border: 1px solid #ddd; /* Adjust the border style as needed */
-            width: 60%; /* Adjust the width as needed */
-            margin: 50px auto;
-            padding: 20px;
-            text-align: left;
-        }
+
         body {
             font-family: "Helvetica", sans-serif;
             color: #484747;
@@ -99,11 +94,19 @@
         .reset{
             margin-top: 8px;
         }
+        #search-bar{
+            width: 230px;
+            height: 50px;
+            position: absolute;
+            right: 10px;
+            top: 40px;
+
+        }
     </style>
 </head>
 <div class="content-box">
     <a href="https://www.figma.com/proto/akcsgykFNqUw8lXTNhy92n/Auspicious-Clouds?type=design&node-id=100-13&t=SR9QN4Izq9hNBUv9-8&scaling=min-zoom&page-id=69%3A2&starting-point-node-id=69%3A3&hotspot-hints=0&hide-ui=1"> <img src="img/header.jpg" width="700" height="100"> </a>
-    <img src="img/search.jpg" width="230px" height="50px">
+    <img src="img/search.jpg" id="search-bar">
     <div class="list_nav">
                 <ul class="nav_wrap">
                     <li class="">
@@ -113,10 +116,19 @@
                         <a href="not-implemented.html" target="parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">About</font></font></a>
                     </li>
                     <li class="">
+                        <a href="not-implemented.html" target="parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Notifications</font></font></a>
+                    </li>
+                    <li class="">
                         <a href="not-implemented.html" target="_parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Study in the United States</font></font></a>
                     </li>
                     <li class="">
                         <a href="https://www.figma.com/proto/akcsgykFNqUw8lXTNhy92n/Auspicious-Clouds?node-id=100-13&starting-point-node-id=69%3A3" target="_parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Study in China</font></font></a>
+                    </li>
+                    <li class="">
+                        <a href="not-implemented.html" target="parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Learn Chinese</font></font></a>
+                    </li>
+                    <li class="">
+                        <a href="not-implemented.html" target="parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">US-China Exchange Programs</font></font></a>
                     </li>
                     <li class="">
                         <a href="not-implemented.html" target="_parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Employment & Internships</font></font></a>
@@ -225,6 +237,14 @@
                                         <option value="PhD">PhD</option>
                                     </select>
                                 </div>
+                                    <div class="blue-box">
+                                        <p><span>Housing</span></p>
+                                        <select id="housing">
+                                            <option value="Default">Select Housing</option>
+                                            <option value="Single Bed">Single Bed</option>
+                                            <option value="Double Bed">Double Bed</option>
+                                        </select>
+                                    </div>
                                 <div class="blue-box">
                                     <p><span>Length of Study</span></p>
                                     <select id="lengthOfStay">
@@ -235,15 +255,6 @@
 
                                         <!-- Add more options as needed -->
                                     </select>
-                                </div>
-                                <div class="blue-box">
-                                    <p><span>Housing</span></p>
-                                    <select id="housing">
-                                        <option value="Default">Select Housing</option>
-                                        <option value="Single Bed">Single Bed</option>
-                                        <option value="Double Bed">Double Bed</option>
-                                    </select>
-
                                 </div>
                                     <div class="base-box">
                                         <p><span>Base Costs: this includes ¥1600 (or $220) to cover Registration Fee and Textbooks</span></p>
@@ -281,8 +292,6 @@
                         const selects = document.querySelectorAll("select");
                         const totalInput = document.getElementById("total");
                         let currency = "Yuan"
-                        let originalTotal = 1600;
-
                         function convertToUSD(totalInYuans) {
                             const exchangeRate = 0.14; // Example exchange rate: 1 Yuan = 0.15 USD
                             return totalInYuans * exchangeRate;
@@ -305,14 +314,14 @@
                             const allFieldsFilled = Array.from(selects).every(select => select.value !== "Default");
 
                             if (allFieldsFilled) {
-                                let sum = originalTotal;
+                                sum = 0;
                                 selects.forEach((select) => {
                                     const selectedValue = parseInt(select.value);
                                     if (!isNaN(selectedValue)) {
                                         sum += selectedValue;
                                     }
                                 });
-                                totalInput.value = sum;
+                                totalInput.value = sum + 1600;
                                 updateTotalDisplay();
                             }
                         else{totalInput.value = "";
@@ -408,12 +417,12 @@
                             const selectedValue = lengthOfStaySelect.value;
                             const housingOptions = stayToHousingMap[selectedValue];
 
-                            for (let i = 0; i < housingSelect.options.length; i++) {
-                                const option = housingSelect.options[i];
-                                option.value = housingOptions[option.textContent.trim()];
-                            }
+                                for (let i = 0; i < housingSelect.options.length; i++) {
+                                    const option = housingSelect.options[i];
+                                    option.value = housingOptions[option.textContent.trim()];
+                                }
 
-                            calculateTotal(); // Call calculateTotal to update the total whenever length of stay values change
+                                calculateTotal(); // Call calculateTotal only when both length of stay and housing are selected
                         }
 
                         function updateDegreeProgramValues() {
