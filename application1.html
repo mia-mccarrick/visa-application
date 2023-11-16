@@ -189,6 +189,16 @@
             cursor: pointer;
         }
 
+        #zoom-in, #zoom-out, #rotate-button{
+            font-size: 14px;
+            width: 80px;
+            height: 50px;
+        }
+
+        #submit{
+            background-color: #168347;
+        }
+
     </style>
     <title>Chinese Visa Questionnaire</title>
 </head>
@@ -217,10 +227,9 @@
 
 <div class="upload-photo-box">
     <h2>UPLOAD PHOTO</h2>
-    <!-- Add your photo upload functionality here -->
     <label for="photo">Choose a photo:</label>
     <input type="file" id="photo" name="photo" accept="image/*">
-    <button onclick="uploadPhoto()">Upload Photo</button>
+    <button onclick="uploadPhoto()">Check Photo</button>
 
     <div id="photo-container">
         <div id="square-container">
@@ -233,27 +242,12 @@
             <button id="rotate-button" onclick="rotatePhoto()">Rotate</button>
         </div>
         <p class="valid-text" id="valid-text"></p>
+        <button id="submit">SUBMIT</button>
     </div>
 </div>
 
 <div class="questionnaire-box">
-    <label>Personal Information</label>
-    <div class="sub-box">
-        <label>First Name</label>
-        <input type="text">
-    </div>
-    <div class="sub-box">
-        <label>Last Name</label>
-        <input type="text">
-    </div>
-    <div class="sub-box">
-        <label>Chinese Name (if applicable)</label>
-        <input type="text">
-    </div>
-</div>
-
-<div class="questionnaire-box">
-    <label>Personal Information</label>
+    <h2>Personal Information</h2>
     <div class="sub-box">
         <label>First Name</label>
         <input type="text">
@@ -468,7 +462,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Passport Information</label>
+    <h2>Passport Information</h2>
     <div class="sub-box">
         <div class="item">
             <div class="form-group">
@@ -649,17 +643,6 @@
         alert("Application ID: " + applicationID);
     }
 
-    $(document).ready(function() {
-        // Fetch the list of countries
-        var countries = Object.keys(countriesList);
-
-        // Populate the dropdown with countries
-        var dropdown = $("#country");
-        countries.forEach(function(country) {
-            var option = $("<option>").val(country).text(countriesList[country]);
-            dropdown.append(option);
-        });
-    });
 
 </script>
 
