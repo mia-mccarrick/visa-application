@@ -76,7 +76,23 @@
     .progress-item {
         width: 20px;
         height: 20px;
-        background-color: #4caf50;
+        background-color: #961e1e;
+        border-radius: 50%;
+        margin: 5px 0;
+    }
+
+    .progress-item-done {
+        width: 20px;
+        height: 20px;
+        background-color: green;
+        border-radius: 50%;
+        margin: 5px 0;
+    }
+
+    .progress-item-curr {
+        width: 20px;
+        height: 20px;
+        background-color: yellow;
         border-radius: 50%;
         margin: 5px 0;
     }
@@ -311,22 +327,21 @@
 </div>
 
 <div class="progress-bar">
-    <div class="progress-item"title="Home Page"></div>
-    <div class="progress-label">1. Home Page</div>
-    <div class="progress-item" title="Personal Information"></div>
-    <div class="progress-label">2. Personal Information</div>
-    <div class="progress-item" title="Type of Visa"></div>
-    <div class="progress-label">3. Type of Visa</div>
-    <div class="progress-item" title="Work Information"></div>
-    <div class="progress-label">4. Work & Education</div>
+
+    <div class="progress-item-done" title="Personal Information"></div>
+    <div class="progress-label">1. Personal Information</div>
+    <div class="progress-item-done" title="Type of Visa"></div>
+    <div class="progress-label">2. Type of Visa</div>
+    <div class="progress-item-curr" title="Work Information"></div>
+    <div class="progress-label">3. Work & Education</div>
     <div class="progress-item" title="Family Information"></div>
-    <div class="progress-label">5. Family Information</div>
+    <div class="progress-label">4. Family Information</div>
     <div class="progress-item" title="BLANK"></div>
-    <div class="progress-label">6. Trip Itinerary</div>
+    <div class="progress-label">5. Trip Itinerary</div>
     <div class="progress-item" title="Past Travel"></div>
-    <div class="progress-label">7. Past Travel</div>
+    <div class="progress-label">6. Past Travel</div>
     <div class="progress-item" title="Other Information"></div>
-    <div class="progress-label">8. Other Information</div>
+    <div class="progress-label">7. Other Information</div>
     <div class="progress-item" title="BLANK"></div>
     <div class="progress-label">Submit</div>
 </div>
