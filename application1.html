@@ -76,7 +76,7 @@
         .progress-item {
             width: 20px;
             height: 20px;
-            background-color: #4caf50;
+            background-color: #961e1e;
             border-radius: 50%;
             margin: 5px 0;
         }
@@ -198,6 +198,7 @@
         #submit{
             background-color: #168347;
         }
+
 
     </style>
     <title>Chinese Visa Questionnaire</title>
@@ -550,10 +551,10 @@
 </div>
     </div>
 </div>
-<a href="application2.html" id="next-button">Next</a>
+<a href="application2.html" id="next-button" onclick="updateProgressBar(2)">Next</a>
 
 <div class="progress-bar">
-    <div class="progress-item" title="Home Page"></div>
+    <div class="progress-item"title="Home Page"></div>
     <div class="progress-label">Home Page</div>
     <div class="progress-item" title="Personal Information"></div>
     <div class="progress-label">Personal Information</div>
@@ -642,7 +643,6 @@
         var applicationID = document.getElementById("application-id").value;
         alert("Application ID: " + applicationID);
     }
-
 
 </script>
 
