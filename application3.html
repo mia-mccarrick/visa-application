@@ -11,7 +11,7 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 20px;
-        background-color: #0f4688;
+        background-color: whitesmoke;
     }
 
     .questionnaire-box {
@@ -76,7 +76,23 @@
     .progress-item {
         width: 20px;
         height: 20px;
-        background-color: #4caf50;
+        background-color: #961e1e;
+        border-radius: 50%;
+        margin: 5px 0;
+    }
+
+    .progress-item-done {
+        width: 20px;
+        height: 20px;
+        background-color: green;
+        border-radius: 50%;
+        margin: 5px 0;
+    }
+
+    .progress-item-curr {
+        width: 20px;
+        height: 20px;
+        background-color: yellow;
         border-radius: 50%;
         margin: 5px 0;
     }
@@ -84,6 +100,11 @@
     .progress-label {
         font-size: 12px;
         text-align: center;
+    }
+
+    .required-label {
+        color: red;
+        font-weight: bold;
     }
 
 
@@ -174,8 +195,12 @@
     <button onclick="printApplicationID()">Print ID</button>
 </div>
 
+<div>
+    <label class="required-label">* Required</label>
+</div>
+
 <div class="questionnaire-box">
-    <label>Occupation Area</label>
+    <label class="required-label">*</label><label>Occupation Area</label>
     <div class="sub-box">
         <select style="height: 33px; width: 300px">
             <option></option>
@@ -193,7 +218,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <label>Most Recent Work Experience</label>
+    <label class="required-label">*</label><label>Most Recent Work Experience</label>
     <div class="sub-box">
         <label>Are you currently employed?</label>
         <div class="choice-option">
@@ -284,7 +309,7 @@
     </div>
 </div>
 <div class="questionnaire-box">
-    <label>Highest Level of Education</label>
+    <label class="required-label">*</label><label>Highest Level of Education</label>
     <div class="sub-box">
         <label>Name of School</label>
         <input type="text">
@@ -311,22 +336,21 @@
 </div>
 
 <div class="progress-bar">
-    <div class="progress-item" title="Home Page"></div>
-    <div class="progress-label">Home Page</div>
-    <div class="progress-item" title="Personal Information"></div>
-    <div class="progress-label">Personal Information</div>
-    <div class="progress-item" title="Type of Visa"></div>
-    <div class="progress-label">Type of Visa</div>
-    <div class="progress-item" title="Work Information"></div>
-    <div class="progress-label">Work & Education</div>
+
+    <div class="progress-item-done" title="Personal Information"></div>
+    <div class="progress-label">1. Personal Information</div>
+    <div class="progress-item-done" title="Type of Visa"></div>
+    <div class="progress-label">2. Type of Visa</div>
+    <div class="progress-item-curr" title="Work Information"></div>
+    <div class="progress-label">3. Work & Education</div>
     <div class="progress-item" title="Family Information"></div>
-    <div class="progress-label">Family Information</div>
+    <div class="progress-label">4. Family Information</div>
     <div class="progress-item" title="BLANK"></div>
-    <div class="progress-label">Trip Itinerary</div>
+    <div class="progress-label">5. Trip Itinerary</div>
     <div class="progress-item" title="Past Travel"></div>
-    <div class="progress-label">Past Travel</div>
+    <div class="progress-label">6. Past Travel</div>
     <div class="progress-item" title="Other Information"></div>
-    <div class="progress-label">Other Information</div>
+    <div class="progress-label">7. Other Information</div>
     <div class="progress-item" title="BLANK"></div>
     <div class="progress-label">Submit</div>
 </div>

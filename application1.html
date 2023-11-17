@@ -11,7 +11,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #0f4688;
+            background-color: whitesmoke;
         }
 
         .questionnaire-box {
@@ -77,6 +77,14 @@
             width: 20px;
             height: 20px;
             background-color: #961e1e;
+            border-radius: 50%;
+            margin: 5px 0;
+        }
+
+        .progress-item-curr {
+            width: 20px;
+            height: 20px;
+            background-color: yellow;
             border-radius: 50%;
             margin: 5px 0;
         }
@@ -168,6 +176,11 @@
             width: 20px; /* Adjust the width of the radio button */
             height: 20px;
             margin-bottom: 10px;
+        }
+
+        .required-label {
+            color: red;
+            font-weight: bold;
         }
 
         .marital-option {
@@ -262,8 +275,12 @@
     <button onclick="printApplicationID()">Print ID</button>
 </div>
 
+<div>
+    <label class="required-label">* Required</label>
+</div>
+
 <div class="questionnaire-box">
-    <label>Where do you plan to apply for Chinese visa?</label>
+    <label class="required-label">*</label><label>Where do you plan to apply for Chinese visa?</label>
     <div class="sub-box">
         <label for="country">Country or Region:</label>
         <input type="text" id="country" value="United States of America" readonly>
@@ -275,7 +292,7 @@
 </div>
 
 <div class="upload-photo-box">
-    <h2>UPLOAD PHOTO</h2>
+    <label class="required-label">*</label><h2>UPLOAD PHOTO</h2>
     <label for="photo">Choose a photo:</label>
     <input type="file" id="photo" name="photo" accept="image/*">
     <button onclick="uploadPhoto()">Check Photo</button>
@@ -297,7 +314,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <h2>Personal Information</h2>
+    <label class="required-label">*</label><h2>Personal Information</h2>
         <div class="sub-box name-input-box">
             <div class="name">
                 <label>First Name</label>
@@ -315,7 +332,7 @@
     </div>
 
     <div class="questionnaire-box">
-        <label>Date of Birth:</label>
+        <label class="required-label">*</label><label>Date of Birth:</label>
         <div class="sub-box">
             <label for="month">Month:</label>
             <select id="month" style="height: 33px; width: 300px">
@@ -378,7 +395,7 @@
     </div>
     <div class="questionnaire-box">
         <div class="sub-box">
-            <label>Sex: </label>
+            <label class="required-label">*</label><label>Sex: </label>
             <div class="sex-option">
                 <input type="radio" id="male" name="gender" value="male">
                 <label for="male">Male</label>
@@ -392,7 +409,7 @@
     </div>
 
     <div class="questionnaire-box">
-        <label>Place of Birth</label>
+        <label class="required-label">*</label><label>Place of Birth</label>
         <div class="sub-box">
             <label for="country">Select a country:</label>
             <select class="select-block-level select2-hidden-accessible" id="BirthPlaceCountry" name="BirthPlaceCountry" tabindex="-1" aria-hidden="true" style="height: 33px;">
@@ -463,7 +480,7 @@
 
     <div class="questionnaire-box-box">
         <div class="sub-box">
-            <label>Marital Status </label>
+            <label class="required-label">*</label><label>Marital Status </label>
             <label for="married" class="marital-option">
                 <input type="radio" id="married" name="marital-status">
                 Married
@@ -491,7 +508,7 @@
         </div>
     </div>
     <div class="questionnaire-box-box">
-        <label>Permanent Residence</label>
+        <label class="required-label">*</label><label>Permanent Residence</label>
         <div class="sub-box">
             <div class="sub-box">
                 <label>Do you hold any nationality other than your birthplace?</label>
@@ -515,7 +532,7 @@
 </div>
 
 <div class="questionnaire-box">
-    <h2>Passport Information</h2>
+    <label class="required-label">*</label><h2>Passport Information</h2>
     <div class="sub-box">
         <div class="item">
             <div class="form-group">
@@ -614,22 +631,21 @@
 <a href="application2.html" id="next-button" onclick="updateProgressBar(2)">Next</a>
 
 <div class="progress-bar">
-    <div class="progress-item"title="Home Page"></div>
-    <div class="progress-label">Home Page</div>
-    <div class="progress-item" title="Personal Information"></div>
-    <div class="progress-label">Personal Information</div>
+
+    <div class="progress-item-curr" title="Personal Information"></div>
+    <div class="progress-label">1. Personal Information</div>
     <div class="progress-item" title="Type of Visa"></div>
-    <div class="progress-label">Type of Visa</div>
+    <div class="progress-label">2. Type of Visa</div>
     <div class="progress-item" title="Work Information"></div>
-    <div class="progress-label">Work & Education</div>
+    <div class="progress-label">3. Work & Education</div>
     <div class="progress-item" title="Family Information"></div>
-    <div class="progress-label">Family Information</div>
+    <div class="progress-label">4. Family Information</div>
     <div class="progress-item" title="BLANK"></div>
-    <div class="progress-label">Trip Itinerary</div>
+    <div class="progress-label">5. Trip Itinerary</div>
     <div class="progress-item" title="Past Travel"></div>
-    <div class="progress-label">Past Travel</div>
+    <div class="progress-label">6. Past Travel</div>
     <div class="progress-item" title="Other Information"></div>
-    <div class="progress-label">Other Information</div>
+    <div class="progress-label">7. Other Information</div>
     <div class="progress-item" title="BLANK"></div>
     <div class="progress-label">Submit</div>
 </div>
