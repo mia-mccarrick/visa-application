@@ -1,457 +1,198 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        /* CSS for the navigation bar */
-        ul.nav_wrap {
-            list-style-type: none;
+        body {
+            background-image: url('img/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            height:100px;
-            background-color: #16388E;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #000000;
         }
 
-
-        li {
-            float: left;
+        img {
+            height: 100px; /* Adjust the height as needed */
+            width: auto; /* Maintain aspect ratio */
+            margin-bottom: 20px; /* Add margin below the logo */
         }
 
-        li a {
-            display: block;
-            color: white;
-            margin-top: 20px;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
+        .container {
+            text-align: left; /* Adjust the top margin as needed */
+            margin-bottom: 20px; /* Adjust the bottom margin as needed */
+            margin-left: 100px;
+            margin-top: -50px;
         }
 
-        /* Change the color of the links when hovered */
-        li a:hover {
-            background-color: #2980b9; /* Change this to the desired hover color */
+        .language-options {
+            display: flex;
+            gap: 10px;
         }
 
-        body {
-            font-family: "Helvetica", sans-serif;
-            color: #484747;
-        }
-        .zoom-box {
-            width: 60%; /* Adjust the width as needed */
-            margin: 50px auto;
-            border: 1px solid #ddd; /* Adjust the border style as needed */
-            padding: 20px;
-        }
-
-        .con_right{
-            /*float: left; /* Add this to align the content to the left */
-            width: 100%; /* Adjust the width as needed */
-            margin-left: 50px; /* Adjust the margin as needed */
-        }
-
-        .blue-box {
-            background-color: #1b74cb; /* Adjust the blue color as needed */
-            color: #ffffff;
-            margin: 20px 0;
+        .language-button {
             padding: 10px;
-        }
-
-        .blue-box p {
-            margin: 0;
-        }
-
-        .blue-box select {
-            width: 100%;
-            padding: 5px;
-            margin-top: 10px;
-        }
-        .base-box p {
-            margin: 5px;
-        }
-        .base-box{
-            background-color: #1b74cb; /* Adjust the blue color as needed */
-            color: #ffffff;
-            width: 98%;
-            padding: 5px;
-            margin-top: 5px;
-            font-weight: normal;
-        }
-
-        .total-box{
-            background-color: #13398c; /* Adjust the blue color as needed */
-            color: #ffffff;
-            width: 98%;
-            padding: 5px;
-            margin-top: 5px;
-            font-weight: bolder;
-            height: 100px; /* Set a fixed height */
-            overflow: hidden; /* Hide overflow content */
-        }
-        .currency{
-            float: left;
             font-size: 16px;
-            color: white;
+            background-color: transparent;
+            color: #000000;
+            border: 1px solid #000000;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+            transition: background-color 0.3s;
         }
-        .reset{
-            margin-top: 8px;
-        }
-        #search-bar{
-            width: 230px;
-            height: 50px;
-            position: absolute;
-            right: 10px;
-            top: 40px;
 
+        .language-button:hover {
+            background-color: rgba(162, 151, 151, 0.2);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style for the dropdown items */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Style for the dropdown on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Style for the nested dropdown on hover */
+        .dropdown:hover .nested-dropdown-usa,
+        .nested-dropdown:hover .nested-dropdown-usa {
+            display: block;
+        }
+
+        /* Style for the nested dropdown items */
+        .nested-dropdown-usa a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
         }
     </style>
 </head>
-<div class="content-box">
-    <a href="https://www.figma.com/proto/akcsgykFNqUw8lXTNhy92n/Auspicious-Clouds?type=design&node-id=100-13&t=SR9QN4Izq9hNBUv9-8&scaling=min-zoom&page-id=69%3A2&starting-point-node-id=69%3A3&hotspot-hints=0&hide-ui=1"> <img src="img/header.jpg" width="700" height="100"> </a>
-    <img src="img/search.jpg" id="search-bar">
-    <div class="list_nav">
-                <ul class="nav_wrap">
-                    <li class="">
-                        <a href="https://www.figma.com/proto/akcsgykFNqUw8lXTNhy92n/Auspicious-Clouds?node-id=81-116&starting-point-node-id=69%3A3" target="_parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Home</font></font></a>
-                    </li>
-                    <li class="">
-                        <a href="not-implemented.html" target="parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">About</font></font></a>
-                    </li>
-                    <li class="">
-                        <a href="not-implemented.html" target="parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Notifications</font></font></a>
-                    </li>
-                    <li class="">
-                        <a href="not-implemented.html" target="_parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Study in the United States</font></font></a>
-                    </li>
-                    <li class="">
-                        <a href="https://www.figma.com/proto/akcsgykFNqUw8lXTNhy92n/Auspicious-Clouds?node-id=100-13&starting-point-node-id=69%3A3" target="_parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Study in China</font></font></a>
-                    </li>
-                    <li class="">
-                        <a href="not-implemented.html" target="parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Learn Chinese</font></font></a>
-                    </li>
-                    <li class="">
-                        <a href="not-implemented.html" target="parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">US-China Exchange Programs</font></font></a>
-                    </li>
-                    <li class="">
-                        <a href="not-implemented.html" target="_parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Employment & Internships</font></font></a>
-                    </li>
-                </ul>
-            </div>
+<body>
+<div class="container">
+    <img src="img/logo.jpg" alt="Logo">
 
-        </div>
-    </div>      </div>
+    <h2 id="language-question">What language do you speak?</h2>
 
-        <div class="con_right fr column" id="con_right" name="右边区域" runat="server">
-            <div class="portlet" id="90060ebec9d549aa80c03b2274fd23e2" pagemoduleid="33e1718d30e24015b9aa073380bc5ce2">
-                <div align="left" class="eps-portlet-header" style="display: none;">
-                    <div id="submenu90060ebec9d549aa80c03b2274fd23e2" class="eps-shadow eps-dn">
-                        <ul class="float_list_ul">
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    </div>
-                    <div class="zoom-box">
-                        <h2 class="d_title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Application Procedures for Studying in China</font></font></h2>
-                        <p style="text-align: center;"><span>STUDY IN CHINA</span></p>
-                        <p><span>　　</span><strong><span>I&nbsp;</span><span>&nbsp;</span><span>Entrance requirements</span></strong></p>
-                        <p><span>　　Welcome to choose China as the destination for your overseas study. Before submitting an application to a Chinese institution, please understand the admission requirements in advance:</span></p>
-                        <p><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">　　If you apply for the admission to primary or secondary schools, please refer to&nbsp; </font></font></span><a href="http://www.moe.gov.cn/srcsite/A02/s5911/moe_621/201705/t20170516_304735.html"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Regulations on Recruitment and Training of International Students</font></font></span></a><font style="vertical-align: inherit;"><span><font style="vertical-align: inherit;"> ("School Recruitment and Training of International Students Management Measures") </font></span><span><font style="vertical-align: inherit;">.&nbsp;</font></span></font><span> </span><span><font style="vertical-align: inherit;"></font></span><span><font style="vertical-align: inherit;"></font></span></p>
-                        <p><span>　　If you apply to&nbsp;</span><a href="http://www.istudyinchina.org/"><span>study in a college in China</span></a><span>, please see the following requirements.</span></p>
-                        <p><span>　<strong>　1. Basic requirements</strong></span></p>
-                        <p><span>　　*Non-Chinese citizens with a valid legal passport</span></p>
-                        <p><span>　　*Good health</span></p>
-                        <p><span>　　*No criminal record</span></p>
-                        <p><span>　　*During your studies, you should abide by Chinese laws and regulations, respect Chinese customs and customs, and abide by school rules and regulations</span></p>
-                        <p><span>　　*In principle, applicants must be at least 18 years of age; if an applicant is under 18 and his (her) parents do not dwell in China, the applicant"s parents shall entrust another foreign or Chinese citizens who live in China as the guardian of the applicant and provide relevant supporting materials.</span></p>
-                        <p><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">　　*For those who have given up their original Chinese citizenship and become foreign citizens, the conditions set by the&nbsp; </font></font></span><a href="http://www.moe.gov.cn/srcsite/A20/moe_850/202006/t20200609_464159.html"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Document No. 12 (2020) of Ministry of Education of the</font></font></span></a><font style="vertical-align: inherit;"><span><font style="vertical-align: inherit;"> PRC Notice》) </font></span><span><font style="vertical-align: inherit;">should be met.</font></span></font><span>&nbsp;</span><span><font style="vertical-align: inherit;"></font></span><span><font style="vertical-align: inherit;"></font></span></p>
-                        <p><span>　　<strong>2. Academic requirements</strong></span></p>
-                        <table border="1" bordercolor="#000000" cellpadding="2" cellspacing="0" style="border-collapse:collapse">
-                            <tbody>
-                            <tr>
-                                <td colspan="5">
-                                    <table border="1" bordercolor="#000000" cellpadding="2" cellspacing="0" style="border-collapse:collapse">
-                                        <tbody>
-                                        <tr>
-                                            <td> <p><span>　　Study types</span></p> </td>
-                                            <td> <p><span>　　Application requirements</span></p> </td>
-                                            <td> <p><span>　　Duration of study</span></p> </td>
-                                        </tr>
-                                        <tr>
-                                            <td> <p><span>　　Bachelor and junior college</span></p> </td>
-                                            <td> <p><span>　　With an equivalent Chinese high school diploma or above, pass the entrance examination of a Chinese university</span></p> </td>
-                                            <td> <p><span>　　Bachelor: 4-5 years</span></p> <p><span>　　Junior college: 2-3 years</span></p> </td>
-                                        </tr>
-                                        <tr>
-                                            <td> <p><span>　　Post graduate</span></p> </td>
-                                            <td> <p><span>　　With a bachelor degree or equivalent academic ability, recommended by two associate professors or more. Pass through the entrance examination or entrance examination is exempted if graduate from a China university with excellent results.</span></p> </td>
-                                            <td> <p><span>　　2-3 years</span></p> </td>
-                                        </tr>
-                                        <tr>
-                                            <td> <p><span>　　Doctoral graduate</span></p> </td>
-                                            <td> <p><span>　　With a post graduate degree and recommended by at least two associate professors and pass the entrance examination organized by a university.</span></p> </td>
-                                            <td> <p><span>　　3 years</span></p> </td>
-                                        </tr>
-                                        <tr>
-                                            <td> <p><span>　　Language training</span></p> </td>
-                                            <td> <p><span>　　With equivalent academic ability of senior high school graduates.</span></p> </td>
-                                            <td> <p><span>　　1-2 years</span></p> </td>
-                                        </tr>
-                                        <tr>
-                                            <td> <p><span>　　Regular exchange students</span></p> </td>
-                                            <td> <p><span>　　With the academic qualification above sophomore.</span></p> </td>
-                                            <td> <p><span>　　1- 2 years</span></p> </td>
-                                        </tr>
-                                        <tr>
-                                            <td> <p><span>　　Senior exchange students/researchers</span></p> </td>
-                                            <td> <p><span>　　With the academic qualification of a postgraduate degree or PH.D students</span></p> </td>
-                                            <td> <p><span>　　Less than 1 year</span></p> </td>
-                                        </tr>
-                                        <tr>
-                                            <td> <p><span>　　Visiting scholars</span></p> </td>
-                                            <td> <p><span>　　Associate professor or above.</span></p> </td>
-                                            <td> <p><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">　　Less than 1 year</font></font></span></p> </td>
-                                        </tr>
-                                        <tr>
-                                            <td> <p><span>　　Short-term study</span></p> </td>
-                                            <td> <p><span>　　With an academic qualification of senor high school graduates.</span></p> </td>
-                                            <td> <p><span>　　4-20 weeks</span></p> </td>
-                                        </tr>
-                                        </tbody>
-                                    </table> <p><span>　　</span></p> <p><span>　　<strong>3. Language requirements</strong></span></p> <p><span>　　*If you choose Chinese-taught course, you should have an appropriate Chinese proficiency Report(HSK scores for the Chinese proficiency test; if the applicant chooses the Chinese language training or preparatory courses, no HSK scores are needed).</span></p> <p><span>　　*If you choose an English course, you should have the appropriate level of English (IELS or TOEFL scores, if the applicant"s native language is English, no IELS or TOEFL scores are needed)。</span></p> <p><span>　　</span></p> <p><span>　　</span><strong><span>&nbsp;</span>
-
-                                    <p><strong><span>II&nbsp;&nbsp;</span><span>Study expenses (for self-financed students)</span></strong></p>
-                                    <div class="blue-box">
-                                    <p><span>Area of Study</span></p>
-                                    <select id="areaOfStudy">
-                                        <option value="Default">Select Area of Study</option>
-                                        <option value="Liberal Arts">Liberal Arts</option>
-                                        <option value="Science and Technology">Science and Technology</option>
-                                        <option value="Medical Science">Medical Science</option>
-                                    </select>
-                                </div>
-                                <div class="blue-box">
-                                    <p><span>Degree Program</span></p>
-                                    <select id="degreeProgram">
-                                        <option value="Default">Select Degree Program</option>
-                                        <option value="Undergraduate">Undergraduate</option>
-                                        <option value="Post-Graduate and Researcher">Post-Graduate or Researcher</option>
-                                        <option value="PhD">PhD</option>
-                                    </select>
-                                </div>
-                                    <div class="blue-box">
-                                        <p><span>Housing</span></p>
-                                        <select id="housing">
-                                            <option value="Default">Select Housing</option>
-                                            <option value="Single Bed">Single Bed</option>
-                                            <option value="Double Bed">Double Bed</option>
-                                        </select>
-                                    </div>
-                                <div class="blue-box">
-                                    <p><span>Length of Study</span></p>
-                                    <select id="lengthOfStay">
-                                        <option value="Default">Select Length of Study</option>
-                                        <option value="Summer">Summer</option>
-                                        <option value="Semester">Semester</option>
-                                        <option value="School Year">School Year</option>
-
-                                        <!-- Add more options as needed -->
-                                    </select>
-                                </div>
-                                    <div class="base-box">
-                                        <p><span>Base Costs: this includes ¥1600 (or $220) to cover Registration Fee and Textbooks</span></p>
-                                    </div>
-
-                                    <div class="total-box">
-                                        <p><span>Total</span></p>
-                                        <input type="text" id="total" disabled>
-                                        <div class="currency">
-                                            <span id="currencySymbol"></span><span id="currency"></span>
-                                        </div>
-                                        <div class="convert">
-                                            <button id="convertToUSDButton">Convert to USD</button>
-                                            <button id="convertToYuansButton" style="display: none;">Convert to Yuan</button>
-                                        </div>
-                                    </div>
-
-                                    <div class = "reset">
-                                        <button id="resetButton">Reset Fields</button>
-                                    </div>
-                                </strong>
-
-                            </tr>
-                            <tr>
-                                <td colspan="5"> <p><span>　　</span></p> </td>
-                            </tr>
-                        </table>
-                        <p><span>　　</span></p>
-                        <p><span>Note: The expenses mentioned above do not include English/Bilingual taught courses and special majors in some institutions.</span></p>
-                        <p><strong><span>For more information, please visit the website </span><a href="http://www.studyinchina.edu.cn/"><span>www.studyinchina.edu.cn</span></a><span>.</span></strong></p>
-                    </div>
-                </div>
-                <script>
-                    document.addEventListener("DOMContentLoaded", function () {
-                        const selects = document.querySelectorAll("select");
-                        const totalInput = document.getElementById("total");
-                        let currency = "Yuan"
-                        function convertToUSD(totalInYuans) {
-                            const exchangeRate = 0.14; // Example exchange rate: 1 Yuan = 0.15 USD
-                            return totalInYuans * exchangeRate;
-                        }
-                        function convertToYuans(totalInUSD) {
-                            const exchangeRate = 1 / 0.14; // Inverse of the example exchange rate: 1 USD = 6.67 Yuan
-                            return totalInUSD * exchangeRate;
-                        }
-                        function updateTotalDisplay() {
-                            const value = parseFloat(totalInput.value);
-                            if (currency === "USD") {
-                                totalInput.value = value.toFixed(2);
-                                document.getElementById("currencySymbol").innerText = "$";
-                            } else if (currency === "Yuan") {
-                                totalInput.value = value.toFixed(2);
-                                document.getElementById("currencySymbol").innerText = "¥";
-                            }
-                        }
-                        function calculateTotal() {
-                            const allFieldsFilled = Array.from(selects).every(select => select.value !== "Default");
-
-                            if (allFieldsFilled) {
-                                sum = 0;
-                                selects.forEach((select) => {
-                                    const selectedValue = parseInt(select.value);
-                                    if (!isNaN(selectedValue)) {
-                                        sum += selectedValue;
-                                    }
-                                });
-                                totalInput.value = sum + 1600;
-                                updateTotalDisplay();
-                            }
-                        else{totalInput.value = "";
-                            document.getElementById("currencySymbol").innerText = "";
-                        }
-
-                        }
-
-                        function convertAndUpdateToUSD() {
-                            const convertedTotal = convertToUSD(parseInt(totalInput.value));
-                            totalInput.value = convertedTotal.toFixed(2);
-                            currency = "USD";
-                            convertToUSDButton.style.display = "none";
-                            convertToYuansButton.style.display = "block";
-                            updateTotalDisplay();
-                        }
-
-                        function convertAndUpdateToYuans() {
-                            const convertedTotal = convertToYuans(parseInt(totalInput.value));
-                            totalInput.value = convertedTotal.toFixed(2);
-                            currency = "Yuan";
-                            convertToYuansButton.style.display = "none";
-                            convertToUSDButton.style.display = "block";
-                            updateTotalDisplay();
-                        }
-
-                        selects.forEach((select) => {
-                            select.addEventListener("change", calculateTotal);
-                        });
-
-                        const convertToUSDButton = document.getElementById("convertToUSDButton");
-                        convertToUSDButton.addEventListener("click", convertAndUpdateToUSD);
-
-                        const convertToYuansButton = document.getElementById("convertToYuansButton");
-                        convertToYuansButton.addEventListener("click", convertAndUpdateToYuans);
-
-
-
-                        const areaOfStudySelect = document.getElementById("areaOfStudy");
-                        const degreeProgramSelect = document.getElementById("degreeProgram");
-
-                        const areaToValueMap = {
-                            "Liberal Arts": {
-                                "Undergraduate": 26000,
-                                "Post-Graduate and Researcher": 30000,
-                                "PhD": 34000
-                            },
-                            "Science and Technology": {
-                                "Undergraduate": 33800,
-                                "Post-Graduate and Researcher": 39000,
-                                "PhD": 44200
-                            },
-                            "Medical Science": {
-                                "Undergraduate": 56000,
-                                "Post-Graduate and Researcher": 60000,
-                                "PhD": 68000
-                            }
-                        };
-
-                        const lengthOfStaySelect = document.getElementById("lengthOfStay");
-                        const housingSelect = document.getElementById("housing");
-
-                        const stayToHousingMap = {
-                            "Summer": {
-                                "Single Bed": 10500,
-                                "Double Bed": 5600,
-                            },
-                            "Semester": {
-                                "Single Bed": 16800,
-                                "Double Bed": 8960,
-                            },
-                            "School Year": {
-                                "Single Bed": 33600,
-                                "Double Bed": 17920,
-                            }
-                        };
-
-                        const resetButton = document.getElementById("resetButton");
-                        resetButton.addEventListener("click", resetFields);
-
-                        function resetFields() {
-                            selects.forEach((select) => {
-                                select.value = "Default";
-                            });
-
-                            totalInput.value = originalTotal;
-                            currency = "Yuan";
-                            convertToYuansButton.style.display = "none";
-                            convertToUSDButton.style.display = "block";
-                            updateTotalDisplay();}
-
-                        function updateLengthOfStayValues() {
-                            const selectedValue = lengthOfStaySelect.value;
-                            const housingOptions = stayToHousingMap[selectedValue];
-
-                                for (let i = 0; i < housingSelect.options.length; i++) {
-                                    const option = housingSelect.options[i];
-                                    option.value = housingOptions[option.textContent.trim()];
-                                }
-
-                                calculateTotal(); // Call calculateTotal only when both length of stay and housing are selected
-                        }
-
-                        function updateDegreeProgramValues() {
-                            const selectedValue = areaOfStudySelect.value;
-                            const degreeProgramOptions = areaToValueMap[selectedValue];
-
-                            for (let i = 0; i < degreeProgramSelect.options.length; i++) {
-                                const option = degreeProgramSelect.options[i];
-                                option.value = degreeProgramOptions[option.textContent.trim()];
-                            }
-
-                            calculateTotal(); // Call calculateTotal to update the total whenever degree program values change
-                        }
-
-                        lengthOfStaySelect.addEventListener("change", updateLengthOfStayValues);
-                        areaOfStudySelect.addEventListener("change", updateDegreeProgramValues);
-
-                        updateLengthOfStayValues(); // Call initially to set default housing values
-                        updateDegreeProgramValues(); // Call initially to set default degree program values
-
-                        if (currency === "USD") {
-                            convertToYuansButton.style.display = "none";
-                        } else {
-                            convertToUSDButton.style.display = "none";
-                        }
-                        updateTotalDisplay();
-                    });
-                </script>
-            </div>
-            </div>      </html>
+    <div class="language-options">
+        <a href="#" class="language-button" onclick="selectLanguage('english')">English</a>
+        <a href="#" class="language-button" onclick="selectLanguage('chinese')">中文</a>
+        <a href="#" class="language-button" onclick="selectLanguage('spanish')">Español</a>
+        <a href="#" class="language-button" onclick="selectLanguage('french')">Français</a>
+        <a href="#" class="language-button" onclick="selectLanguage('russian')">Русский</a>
+        <a href="#" class="language-button" onclick="selectLanguage('arabic')">العربية</a>
     </div>
+
+    <h2 id="country-question">Where are you applying from?</h2>
+
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">North America
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li class="dropdown-submenu">
+                <a class="test" tabindex="-1" href="#">United States of America <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="start-screen.html">Washington D.C.</a></li>
+                    <li><a tabindex="-1" href="#">Chicago</a></li>
+                    <li><a tabindex="-1" href="#">New York</a></li>
+                    <li><a tabindex="-1" href="#">Los Angeles</a></li>
+                    <li><a tabindex="-1" href="#">Houston</a></li>
+                    <li><a tabindex="-1" href="#">San Fransico</a></li>
+                </ul>
+            </li>
+            <li><a tabindex="-1" href="#">Antigua and Barbuda</a></li>
+            <li><a tabindex="-1" href="#">Bahamas</a></li>
+            <li><a tabindex="-1" href="#">Barbados</a></li>
+            <li><a tabindex="-1" href="#">Canada</a></li>
+            <li><a tabindex="-1" href="#">Costa Rica</a></li>
+            <li><a tabindex="-1" href="#">Cuba</a></li>
+            <li><a tabindex="-1" href="#">Dominica</a></li>
+            <li><a tabindex="-1" href="#">Dominican Republic</a></li>
+            <li><a tabindex="-1" href="#">El Salvador</a></li>
+            <li><a tabindex="-1" href="#">Haiti</a></li>
+            <li><a tabindex="-1" href="#">Jamaica</a></li>
+            <li><a tabindex="-1" href="#">Mexico</a></li>
+            <li><a tabindex="-1" href="#">Panama</a></li>
+            <li><a tabindex="-1" href="#">Trinidad and Tobago</a></li>
+            <li><a tabindex="-1" href="#">United States of America</a></li>
+        </ul>
+    </div>
+
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">South America
+        <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">Not Implemented</a></li>
+    </ul>
+
+    </ul>
+
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Africa
+        <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">Not Implemented</a></li>
+    </ul>
+
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Asia
+        <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">Not Implemented</a></li>
+    </ul>
+
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Europe
+        <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">Not Implemented</a></li>
+    </ul>
+
+
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Australia
+        <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">Not Implemented</a></li>
+    </ul>
 </div>
+
+
+<script>
+    // Placeholder for your script
+    $(document).ready(function(){
+        $('.dropdown-submenu a.test').on("click", function(e){
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    });
+</script>
+</body>
+</html>
